@@ -117,42 +117,48 @@
                                 {"breakpoint": 768, "settings": {"slidesToShow": 2}},
                                 {"breakpoint": 480, "settings": {"slidesToShow": 1}}
                             ]'>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-01.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
+                            @foreach ($errors as $products)
+                            
+                            <div class="item">
+                                <div class="ft-product">
+                                    <div class="product-inner">
+                                        <div class="product-image">
+                                            <figure class="product-image--holder">
+                                                <img src="assets/img/products/prod-01.jpg" alt="Product">
+                                            </figure>
+                                            <a href="product" class="product-overlay"></a>
+                                            <div class="product-action">
+                                                <a data-toggle="modal" data-target="#productModal" class="action-btn">
+                                                    <i class="la la-eye"></i>
+                                                </a>
+                                                <a href="wishlist.html" class="action-btn">
+                                                    <i class="la la-heart-o"></i>
+                                                </a>
+                                                <a href="wishlist.html" class="action-btn">
+                                                    <i class="la la-repeat"></i>
+                                                </a>
                                             </div>
-                                            <div class="product-info plr--20">
-                                                <h3 class="product-title"><a href="/product">Ghế Sofa Băng Giá-TB21</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">6.500.000Đ</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Thêm vào giõ hàng</span>
-                                                    </a>
+                                        </div>
+                                        <div class="product-info plr--20">
+                                            {{-- <h3 class="product-title"><a href="/product">Ghế Sofa Băng Giá-TB21</a></h3> --}}
+                                            <h3 class="product-title"><a href="/product">{{ $product->category->name }}</a></h3>
+
+                                            <div class="product-info-bottom">
+                                                <div class="product-price-wrapper">
+                                                    <span class="money">6.500.000Đ</span>
                                                 </div>
+                                                <a href="cart.html" class="add-to-cart">
+                                                    <i class="la la-plus"></i>
+                                                    <span>Thêm vào giõ hàng</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
+                            </div>
+                            @endforeach
+                                
+                                {{-- <div class="item">
                                     <div class="ft-product">
                                         <div class="product-inner">
                                             <div class="product-image">
@@ -221,7 +227,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

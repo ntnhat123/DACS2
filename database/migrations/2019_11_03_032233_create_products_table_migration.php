@@ -20,7 +20,7 @@ class CreateProductsTableMigration extends Migration
             $table->unsignedBigInteger('product_category_id');
             $table->unsignedDecimal('price', 10, 2);
             $table->unsignedinteger('stock')->default(0);
-            // $table->string('img');
+            $table->string('image');
             $table->unsignedinteger('stock_defective')->default(0);
             $table->timestamps();
             $table->softDeletes();

@@ -49,6 +49,14 @@
                                     @include('alerts.feedback', ['field' => 'description'])
 
                                 </div>
+                                <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
+                                    
+                                    <label class="form-control-label" for="input-image">Images</label>
+                                    <input type="file" name="image" id="input-image" class="form-control form-control-alternative" value="{{old('image')}}">
+                                
+                                
+                                    @include('alerts.feedback', ['field' => 'image'])
+                                </div>
                                 <div class="row">
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('stock') ? ' has-danger' : '' }}">
