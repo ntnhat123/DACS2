@@ -6,6 +6,7 @@ use App\Product;
 use App\ProductCategory;
 use App\Http\Requests\ProductRequest;
 
+
 class ProductController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(25);
+        $products = Product::paginate(5);
 
         return view('inventory.products.index', compact('products'));
     }
@@ -36,12 +37,37 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  App\Http\Requests\ProductRequest  $request
-     * @param  App\Product  $model
+     * @param  App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request, Product $model)
+    public function store(ProductRequest $request, Product $product)
     {
-        $model->create($request->all());
+     
+        $name= $request->input('name');
+        $description= $request->input('description');
+        $stock= $request->input('stock');
+        $stock_defective= $request->input('stock_defective');
+        $price= $request->input('price');
+        $product_category_id= $request->input('product_category_id');
+
+        
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+             $extension = $file->getClientoriginalExtension(); // getting image extension
+            $filename = time(). '.' . $extension;
+            $file->move('assets/img/products/', $filename);
+            $product = Product::create([
+                'name' => $name,
+                'image'=> $filename,
+                'description' =>$description,
+                'product_category_id' => $product_category_id,
+                'price' => $price,
+                'stock' =>$stock,
+                'stock_defective' => $stock_defective
+            ]);
+        } else{
+            return $request;
+        }
 
         return redirect()
             ->route('products.index')
@@ -55,7 +81,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
+
     {
+        $products = Product::paginate(4);
+
+
         $solds = $product->solds()->latest()->limit(25)->get();
 
         $receiveds = $product->receiveds()->latest()->limit(25)->get();
@@ -70,7 +100,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
+
     {
+        
+        $products = Product::all();
         $categories = ProductCategory::all();
 
         return view('inventory.products.edit', compact('product', 'categories'));
@@ -85,7 +118,27 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+       
+        
+       $product->name= $request->input('name');
+       $product->description= $request->input('description');
+       $product->stock= $request->input('stock');
+       $product->stock_defective= $request->input('stock_defective');
+       $product->price= $request->input('price');
+       $product->product_category_id= $request->input('product_category_id');
+        
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+             $extension = $file->getClientoriginalExtension(); // getting image extension
+            $filename = time(). '.' . $extension;
+            $file->move('/assets/img/products/', $filename);
+
+        } else{
+            return $request;
+            
+        }
         $product->update($request->all());
+        
 
         return redirect()
             ->route('products.index')

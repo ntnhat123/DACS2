@@ -28,9 +28,9 @@ class ProductRequest extends FormRequest
             'name' => ['required'],
             'product_category_id' => ['required'],
             'description' => [],
+            'image' => ['required','mimes:png,jpg,jpeg,gif|max:5048'],
 
             'stock' => ['required'],
-            'image' => ['required'],
             'price' => ['required'],
             'price_wholesaler' => [],
         ];

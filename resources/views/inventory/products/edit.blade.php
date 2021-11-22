@@ -1,6 +1,8 @@
 @extends('layouts.app', ['page' => 'Edit Product', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
+
+{{-- {{dd($product)}} --}}
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
@@ -16,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('products.update', $product) }}" autocomplete="off">
+                        <form method="post" action="{{ route('products.update', $product) }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
                             @method('put')
 
@@ -52,7 +54,7 @@
                                 <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
                                     
                                     <label class="form-control-label" for="input-image">Images</label>
-                                    <input type="file" name="image" id="input-image" class="form-control form-control-alternative" value="{{old('image')}}">
+                                    <input type="file" name="image" id="input-image" class="form-control form-control-alternative" value="{{old('image',$product->image)}}">
                                 
                                 
                                     @include('alerts.feedback', ['field' => 'image'])

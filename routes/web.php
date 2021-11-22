@@ -2,6 +2,22 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\MethodController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransferController;
+use App\Http\Controllers\UserController;
+use App\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +30,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('index');
+    $products = App\Product::paginate(4);
+    $categories = App\ProductCategory::all();
+    
+    return view('index', ["categories"=>$categories,
+        "products"=>$products
+
+    ]);
 });
 
 Route::get('/index', function () {
@@ -33,6 +55,9 @@ Route::get('/contact-us', function () {
 });
 Route::get('/product', function () {
     return view('product');
+});
+Route::get('/cart', function () {
+    return view('cart');
 });
 
 

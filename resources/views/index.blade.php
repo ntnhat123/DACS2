@@ -13,7 +13,7 @@
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
-    
+    {{-- {{ dd($prodssucts)}} --}}
     <!-- Preloader Start -->
     <div class="ft-preloader active">
         <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
@@ -117,14 +117,15 @@
                                 {"breakpoint": 768, "settings": {"slidesToShow": 2}},
                                 {"breakpoint": 480, "settings": {"slidesToShow": 1}}
                             ]'>
-                            @foreach ($errors as $products)
                             
+                            @foreach ($products as $product)
+                                
                             <div class="item">
                                 <div class="ft-product">
                                     <div class="product-inner">
                                         <div class="product-image">
                                             <figure class="product-image--holder">
-                                                <img src="assets/img/products/prod-01.jpg" alt="Product">
+                                                <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product">
                                             </figure>
                                             <a href="product" class="product-overlay"></a>
                                             <div class="product-action">
@@ -141,11 +142,14 @@
                                         </div>
                                         <div class="product-info plr--20">
                                             {{-- <h3 class="product-title"><a href="/product">Ghế Sofa Băng Giá-TB21</a></h3> --}}
-                                            <h3 class="product-title"><a href="/product">{{ $product->category->name }}</a></h3>
+                                            <h3 class="product-title"><a href="/product">s</a></h3>
 
                                             <div class="product-info-bottom">
                                                 <div class="product-price-wrapper">
-                                                    <span class="money">6.500.000Đ</span>
+                                                    {{-- <span class="money">6.500.000Đ</span> --}}
+                                                    
+                                                    <span class="money">s</span>
+
                                                 </div>
                                                 <a href="cart.html" class="add-to-cart">
                                                     <i class="la la-plus"></i>
@@ -156,6 +160,7 @@
                                     </div>
                                 </div>
                             </div>
+                        
                             @endforeach
                                 
                                 {{-- <div class="item">
@@ -273,15 +278,18 @@
                                     <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
                                         <span class="nav-text">Tất cả</A></span>
                                     </a>
-                                    <a class="nav-item nav-link" id="new-wooden-tab" data-toggle="tab" href="#new-wooden" role="tab" aria-controls="new-wooden" aria-selected="false">
-                                        <span class="nav-text">Sofa</span>
-                                    </a>
-                                    <a class="nav-item nav-link" id="new-furnished-tab" data-toggle="tab" href="#new-furnished" role="tab" aria-controls="new-furnished" aria-selected="false">
+                                    @foreach ($categories as $category)
+                                        <a class="nav-item nav-link" id="new-wooden-tab" data-toggle="tab" href="#new-wooden" role="tab" aria-controls="new-wooden" aria-selected="false">
+                                            <span class="nav-text">{{ $category->name }}</span>
+                                        </a>
+                                    @endforeach
+                                    
+                                    {{-- <a class="nav-item nav-link" id="new-furnished-tab" data-toggle="tab" href="#new-furnished" role="tab" aria-controls="new-furnished" aria-selected="false">
                                         <span class="nav-text">Giường</span>
                                     </a>
                                     <a class="nav-item nav-link" id="new-table-tab" data-toggle="tab" href="#new-table" role="tab" aria-controls="new-table" aria-selected="false">
                                         <span class="nav-text">Bàn</span>
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div>
                         </div>
@@ -289,14 +297,19 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="tab-content" id="product-tab-content">
+                                @foreach ($products as $product)
                                 <div class="tab-pane fade show active" id="new-all" role="tabpanel" aria-labelledby="new-all-tab">
                                     <div class="row">
                                         <div class="col-lg-3 col-sm-6 mb--45">
+                                            
                                             <div class="ft-product HTfadeInUp">
+                                                
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                            {{-- <img src="{{$product->image}}" alt="Product"> --}}
+                                                            <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product">
+
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -313,12 +326,16 @@
                                                     </div>
                                                     <div class="product-info">
                                                         <div class="product-category">
-                                                            <a href="product-details.html">Chair</a>
+                                                            {{-- <a href="product-details.html">Chair</a> --}}
+                                                            <a href="product-details.html">{{$product->category->name}}</a>
+
                                                         </div>
-                                                        <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
+                                                        <h3 class="product-title"><a href="product-details.html">{{$product->description}}</a></h3>
+                                                        {{-- <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3> --}}
+
                                                         <div class="product-info-bottom">
                                                             <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
+                                                                <span class="money">{{$product->price}}</span>
                                                             </div>
                                                             <a href="cart.html" class="add-to-cart pr--15">
                                                                 <i class="la la-plus"></i>
@@ -326,10 +343,14 @@
                                                             </a>
                                                         </div>
                                                     </div>
+                                                     
                                                 </div>
                                             </div>
+                                            
+                                            
                                         </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
+                                          
+                                        {{-- <div class="col-lg-3 col-sm-6 mb--45">
                                             <div class="ft-product HTfadeInUp">
                                                 <div class="product-inner">
                                                     <div class="product-image">
@@ -447,10 +468,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
+                                   
                                 </div>
-                                <div class="tab-pane fade" id="new-wooden" role="tabpanel" aria-labelledby="new-wooden-tab">
+                                
+                                @endforeach
+
+                               
+                                @foreach ($products as $product)
+                                    
+                                
+                                <div class="tab-pane fade" id="new-wooden" role="tabpanel" aria-labelledby="{{ $category->name }}">
                                     <div class="row">
                                         <div class="col-lg-3 col-sm-6 mb--45">
                                             <div class="ft-product HTfadeInUp">
@@ -474,12 +503,12 @@
                                                     </div>
                                                     <div class="product-info">
                                                         <div class="product-category">
-                                                            <a href="product-details.html">Chair</a>
+                                                            <a href="product-details.html">{{$product->category->name}}</a>
                                                         </div>
-                                                        <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
+                                                        <h3 class="product-title"><a href="product-details.html">{{$product->description}}</a></h3>
                                                         <div class="product-info-bottom">
                                                             <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
+                                                                <span class="money">{{$product->price}}</span>
                                                             </div>
                                                             <a href="cart.html" class="add-to-cart pr--15">
                                                                 <i class="la la-plus"></i>
@@ -490,7 +519,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
+                                        {{-- <div class="col-lg-3 col-sm-6 mb--45">
                                             <div class="ft-product HTfadeInUp">
                                                 <div class="product-inner">
                                                     <div class="product-image">
@@ -603,9 +632,39 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
+                                        
                                     </div>
                                 </div>
+                                
+                                
+                                
+                                @endforeach
+                                <nav aria-label="Page navigation example">
+                                    <span class="hidden">
+                                     
+                                        {{ $pages = ceil($products->total() / $products->perPage()) }}
+                                    </span>
+                                    @if ($products->total() != 0)
+
+                                    <ul class="pagination">
+                                      <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}">Previous</a></li>
+                                         @for ($i = 1; $i <= $pages; $i++)
+                                            <li>
+                                                
+                                                <a href = <?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
+                                            </li>
+                                         @endfor
+                                      <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}">Next</a></li>
+                                    </ul>
+                                   @endif
+
+                                </nav>
+
+                                @foreach ($products as $product)
+                                    
+                                
+
                                 <div class="tab-pane fade" id="new-furnished" role="tabpanel" aria-labelledby="new-furnished-tab">
                                     <div class="row">
                                         <div class="col-lg-3 col-sm-6 mb--45">
@@ -646,7 +705,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
+                                        {{-- <div class="col-lg-3 col-sm-6 mb--45">
                                             <div class="ft-product HTfadeInUp">
                                                 <div class="product-inner">
                                                     <div class="product-image">
@@ -759,9 +818,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
+                                @endforeach
                                 <div class="tab-pane fade" id="new-table" role="tabpanel" aria-labelledby="new-table-tab">
                                     <div class="row">
                                         <div class="col-lg-3 col-sm-6 mb--45">
@@ -1312,7 +1372,7 @@
                             <div class="product-image">
                                 <div class="product-image--holder">
                                     <a href="product-details.html">
-                                        <img src="assets/img/products/prod-01.jpg" alt="Product Image" class="primary-image">
+                                        <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product Image" class="primary-image">
                                     </a>
                                 </div>
                                 <span class="product-badge sale">sale</span>
