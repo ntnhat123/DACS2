@@ -142,13 +142,13 @@
                                         </div>
                                         <div class="product-info plr--20">
                                             {{-- <h3 class="product-title"><a href="/product">Ghế Sofa Băng Giá-TB21</a></h3> --}}
-                                            <h3 class="product-title"><a href="/product">s</a></h3>
+                                            <h3 class="product-title"><a href="/product">{{$product->name}}</a></h3>
 
                                             <div class="product-info-bottom">
                                                 <div class="product-price-wrapper">
                                                     {{-- <span class="money">6.500.000Đ</span> --}}
                                                     
-                                                    <span class="money">s</span>
+                                                    <span class="money">{{$product->price}}</span>
 
                                                 </div>
                                                 <a href="cart.html" class="add-to-cart">
@@ -297,57 +297,65 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="tab-content" id="product-tab-content">
-                                @foreach ($products as $product)
                                 <div class="tab-pane fade show active" id="new-all" role="tabpanel" aria-labelledby="new-all-tab">
                                     <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
+                                        <div class="col-12">
+                                            <div class="element-carousel"
+                                            data-slick-options='{
+                                                "spaceBetween": 30,
+                                                "slidesToShow": 4
+                                            }'
+                                            data-slick-responsive='[
+                                                {"breakpoint": 768, "settings": {"slidesToShow": 2}},
+                                                {"breakpoint": 480, "settings": {"slidesToShow": 1}}
+                                            ]'>
                                             
-                                            <div class="ft-product HTfadeInUp">
+                                            @foreach ($products as $product)
                                                 
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            {{-- <img src="{{$product->image}}" alt="Product"> --}}
-                                                            <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product">
-
-                                                        </figure>
-                                                        <a href="product-details.html" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            {{-- <a href="product-details.html">Chair</a> --}}
-                                                            <a href="product-details.html">{{$product->category->name}}</a>
-
-                                                        </div>
-                                                        <h3 class="product-title"><a href="product-details.html">{{$product->description}}</a></h3>
-                                                        {{-- <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3> --}}
-
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">{{$product->price}}</span>
+                                            <div class="item">
+                                                <div class="ft-product">
+                                                    <div class="product-inner">
+                                                        <div class="product-image">
+                                                            <figure class="product-image--holder">
+                                                                <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product">
+                                                            </figure>
+                                                            <a href="product" class="product-overlay"></a>
+                                                            <div class="product-action">
+                                                                <a data-toggle="modal" data-target="#productModal" class="action-btn">
+                                                                    <i class="la la-eye"></i>
+                                                                </a>
+                                                                <a href="wishlist.html" class="action-btn">
+                                                                    <i class="la la-heart-o"></i>
+                                                                </a>
+                                                                <a href="wishlist.html" class="action-btn">
+                                                                    <i class="la la-repeat"></i>
+                                                                </a>
                                                             </div>
-                                                            <a href="cart.html" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
+                                                        </div>
+                                                        <div class="product-info plr--20">
+                                                            {{-- <h3 class="product-title"><a href="/product">Ghế Sofa Băng Giá-TB21</a></h3> --}}
+                                                            <h3 class="product-title"><a href="/product">{{$product->name}}</a></h3>
+                
+                                                            <div class="product-info-bottom">
+                                                                <div class="product-price-wrapper">
+                                                                    {{-- <span class="money">6.500.000Đ</span> --}}
+                                                                    
+                                                                    <span class="money">{{$product->price}}</span>
+                
+                                                                </div>
+                                                                <a href="cart" class="add-to-cart">
+                                                                    <i class="la la-plus"></i>
+                                                                    <span>Thêm vào giõ hàng</span>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                     
                                                 </div>
                                             </div>
-                                            
-                                            
+                                        
+                                            @endforeach
+                                              
+                                            </div>
                                         </div>
                                           
                                         {{-- <div class="col-lg-3 col-sm-6 mb--45">
@@ -473,7 +481,6 @@
                                    
                                 </div>
                                 
-                                @endforeach
 
                                
                                 @foreach ($products as $product)
@@ -886,7 +893,7 @@
                                                         <div class="product-category">
                                                             <a href="product-details.html">Chair</a>
                                                         </div>
-                                                        <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
+                                                        <h3 class="product-title"><a href="product-details.html">Golden Easy Chair.</a></h3>
                                                         <div class="product-info-bottom">
                                                             <div class="product-price-wrapper">
                                                                 <span class="money">$150</span>
@@ -1372,7 +1379,7 @@
                             <div class="product-image">
                                 <div class="product-image--holder">
                                     <a href="product-details.html">
-                                        <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product Image" class="primary-image">
+                                        <img src="" alt="Product Image" class="primary-image">
                                     </a>
                                 </div>
                                 <span class="product-badge sale">sale</span>

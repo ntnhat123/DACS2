@@ -47,7 +47,14 @@ Route::get('/blog', function () {
     return view('blog');
 });
 Route::get('/shop', function () {
-    return view('shop');
+    
+    $products = App\Product::paginate(3);
+    $categories = App\ProductCategory::all();
+    
+    return view('shop', ["categories"=>$categories,
+        "products"=>$products
+
+    ]);
 });
 
 Route::get('/contact-us', function () {
@@ -64,6 +71,7 @@ Route::get('/cart', function () {
 Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('admin/blogs', 'BlogController@index');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -75,6 +83,8 @@ Route::group(['middleware' => 'auth'], function () {
         'inventory/categories' => 'ProductCategoryController',
         'transactions/transfer' => 'TransferController',
         'methods' => 'MethodController',
+        'inventory/blog' => 'BlogController',
+
     ]);
     
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
@@ -92,6 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['put', 'patch'], 'inventory/receipts/{receipt}/product/{receivedproduct}', ['as' => 'receipts.product.update', 'uses' => 'ReceiptController@updateproduct']);
     Route::delete('inventory/receipts/{receipt}/product/{receivedproduct}', ['as' => 'receipts.product.destroy', 'uses' => 'ReceiptController@destroyproduct']);
 
+    
     Route::resource('sales', 'SaleController')->except(['edit', 'update']);
     Route::get('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
     Route::get('sales/{sale}/product/add', ['as' => 'sales.product.add', 'uses' => 'SaleController@addproduct']);
