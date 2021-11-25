@@ -9,7 +9,6 @@ use App\Blog;
 
 use App\Http\Requests\BlogRequest;
 
-
 class BlogController extends Controller
 {
     /**
@@ -19,7 +18,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(4);
+        $blogs = Blog::paginate(25);
 
         return view('inventory.blog.index', compact('blogs'));
     }
@@ -41,7 +40,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BlogRequest $request,Blog $blog)
+    public function store(Request $request,Blog $blog)
     {
         
         $blog->create($request->all());
@@ -78,12 +77,12 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BlogRequest $request, Blog $blog)
+    public function update(Request $request, Blog $blog)
     {
         $blog->update($request->all());
 
         return redirect()
-            ->route('inventoyr.blog.index')
+            ->route('inventory.blog.index')
             ->withStatus('Successfully modified blog.');
     }
 
