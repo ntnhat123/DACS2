@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Blog;
-use App\Sale;
-use App\Client;
-use App\Transaction;
-use App\PaymentMethod;
+
 use Illuminate\Http\Request;
+use App\Blog;
+
+
 use App\Http\Requests\BlogRequest;
+
 
 class BlogController extends Controller
 {
@@ -19,9 +19,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(25);
+        $blogs = Blog::paginate(4);
 
-        return view('blog.index', compact('blog'));
+        return view('inventory.blog.index', compact('blogs'));
     }
 
     /**
@@ -31,20 +31,22 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        return view('inventory.blog.create');
+        
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Request\BlogRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BlogRequest $request, Blog $blog)
+    public function store(BlogRequest $request,Blog $blog)
     {
+        
         $blog->create($request->all());
         
-        return redirect()->route('blog.index')->withStatus('Successfully registered blog.');
+        return redirect()->route('inventory.blog.index')->withStatus('Successfully registered blog.');
     }
 
     /**
@@ -55,7 +57,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('blog.show', compact('blog'));
+        return view('inventory.blog.show', compact('blogs'));
     }
 
     /**
@@ -66,13 +68,13 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view('blog.edit', compact('blog'));
+        return view('inventory.blog.edit', compact('blogs'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Request\BlogRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -81,7 +83,7 @@ class BlogController extends Controller
         $blog->update($request->all());
 
         return redirect()
-            ->route('blog.index')
+            ->route('inventoyr.blog.index')
             ->withStatus('Successfully modified blog.');
     }
 
@@ -91,14 +93,13 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(Blog $blog)
     {
-        $client->delete();
+        $blog->delete();
 
         return redirect()
-            ->route('clients.index')
+            ->route('inventory.blog.index')
             ->withStatus('Blog successfully removed.');
     }
-
-    
 }
+

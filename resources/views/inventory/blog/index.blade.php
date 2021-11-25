@@ -6,11 +6,12 @@
             <div class="card ">
                 <div class="card-header">
                     <div class="row">
+
                         <div class="col-8">
-                            <h4 class="card-title">Categories</h4>
+                            <h4 class="card-title">Blogs</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('blog.create') }}" class="btn btn-sm btn-primary">New Category</a>
+                            <a href="{{route('blog.create')}}" class="btn btn-sm btn-primary">New Blogs</a>
                         </div>
                     </div>
                 </div>
@@ -30,10 +31,11 @@
                                 @foreach ($blogs as $blog)
                                     <tr>
                                         <td>{{ $blog->title }}</td>
-                                        <td>{{ $blog->description) }}</td>
-                                        <td>{{ $blog->image }}</td>
+                                        <td>{{ $blog->description }}</td>    
+                                        <td><img src="{{asset("/assets/img/blog/".$blog->image) }}"width="100px;" height="100px;"></td>
+
                                         
-                                        <td>{{ format_money($category->products->avg('price')) }}</td>
+                                       
                                         <td class="td-actions text-right">
                                             <a href="{{ route('categories.show', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                                 <i class="tim-icons icon-zoom-split"></i>
@@ -57,7 +59,7 @@
                 </div>
                 <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="...">
-                        {{ $categories->links() }}
+                        {{ $blogs->links() }}
                     </nav>
                 </div>
             </div>

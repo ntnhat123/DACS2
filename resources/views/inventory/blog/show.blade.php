@@ -1,47 +1,17 @@
-@extends('layouts.app', ['page' => 'Category Information', 'pageSlug' => 'categories', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Product Information', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Category Information</h4>
+                    <h4 class="card-title">Product Information</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>products</th>
-                            <th>Stocks</th>
-                            <th>Stocks Faulty</th>
-                            <th>Average Price</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->products->count() }}</td>
-                                <td>{{ $category->products->sum('stock') }}</td>
-                                <td>{{ $category->products->sum('stock_defective') }}</td>
-                                <td>${{ round($category->products->avg('price'), 2) }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">products: {{ $products->count() }}</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <th>ID</th>
+                            <th>Category</th>
                             <th>Name</th>
                             <th>Stock</th>
                             <th>Defective Stock</th>
@@ -49,21 +19,52 @@
                             <th>Average Price</th>
                             <th>Total sales</th>
                             <th>Income Produced</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $product->id }}</td>
+                                <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->stock }}</td>
+                                <td>{{ $product->stock_defective }}</td>
+                                <td>{{ format_money($product->price) }}</td>
+                                <td>{{ format_money($product->solds->avg('price')) }}</td>
+                                <td>{{ $product->solds->sum('qty') }}</td>
+                                <td>{{ format_money($product->solds->sum('total_amount')) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Latest Sales</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <th>Date</th>
+                            <th>Sale ID</th>
+                            <th>Quantity</th>
+                            <th>Price Unit</th>
+                            <th>Total Amount</th>
                             <th></th>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
+                            @foreach ($solds as $sold)
                                 <tr>
-                                    <td><a href="{{ route('products.show', $product) }}">{{ $product->id }}</a></td>
-                                    <td><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></td>
-                                    <td>{{ $product->stock }}</td>
-                                    <td>{{ $product->stock_defective }}</td>
-                                    <td>{{ format_money($product->price) }}</td>
-                                    <td>{{ format_money($product->solds->avg('price')) }}</td>
-                                    <td>{{ $product->solds->sum('qty') }}</td>
-                                    <td>{{ format_money($product->solds->sum('total_amount')) }}</td>
+                                    <td>{{ date('d-m-y', strtotime($sold->created_at)) }}</td>
+                                    <td><a href="{{ route('sales.show', $sold->sale_id) }}">{{ $sold->sale_id }}</a></td>
+                                    <td>{{ $sold->qty }}</td>
+                                    <td>{{ format_money($sold->price) }}</td>
+                                    <td>{{ format_money($sold->total_amount) }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                        <a href="{{ route('sales.show', $sold->sale_id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="View Sale">
                                             <i class="tim-icons icon-zoom-split"></i>
                                         </a>
                                     </td>
@@ -72,10 +73,45 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card-footer py-4">
-                    <nav class="d-flex justify-content-end">
-                        {{ $products->links() }}
-                    </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Latest Receipts</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <th>Date</th>
+                            <th>Receipt ID</th>
+                            <th>Title</th>
+                            <th>Stock</th>
+                            <th>Defective Stock</th>
+                            <th>Total Stock</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            @foreach ($receiveds as $received)
+                                <tr>
+                                    <td>{{ date('d-m-y', strtotime($received->created_at)) }}</td>
+                                    <td><a href="{{ route('receipts.show', $received->receipt) }}">{{ $received->receipt_id }}</a></td>
+                                    <td style="max-width:150px;">{{ $received->receipt->title }}</td>
+                                    <td>{{ $received->stock }}</td>
+                                    <td>{{ $received->stock_defective }}</td>
+                                    <td>{{ $received->stock + $received->stock_defective }}</td>
+                                    <td class="td-actions text-right">
+                                        <a href="{{ route('receipts.show', $received->receipt) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver Receipt">
+                                            <i class="tim-icons icon-zoom-split"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

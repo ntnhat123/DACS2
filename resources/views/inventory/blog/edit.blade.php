@@ -11,7 +11,7 @@
                                 <h3 class="mb-0">New Blog</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('blog.index') }}" class="btn btn-sm btn-primary">Blog to list</a>
+                                <a href="blog.index" class="btn btn-sm btn-primary">Blog to list</a>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                                 <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-title">Title</label>
                                     <input type="text" name="title" id="input-title" class="form-control form-control-alternative{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('title',$blog->title) }}" required autofocus>
-                                    @include('alerts.feedback', ['field' => 'name'])
+                                    @include('alerts.feedback', ['field' => 'title'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
@@ -41,7 +41,7 @@
                                     
                                     @include('alerts.feedback', ['field' => 'image'])
                                 </div>
-
+                                
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">Save</button>
                                 </div>

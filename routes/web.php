@@ -40,11 +40,20 @@ Route::get('/', function () {
 });
 
 Route::get('/index', function () {
-    return view('index');
+    
+    $products = App\Product::paginate(4);
+    $categories = App\ProductCategory::all();
+    
+    return view('index', ["categories"=>$categories,
+        "products"=>$products
+
+    ]);
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    $blogs = App\Blog::paginate(4);
+
+    return view('blog',["blogs"=>$blogs]);
 });
 Route::get('/shop', function () {
     
@@ -71,10 +80,20 @@ Route::get('/cart', function () {
 Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
-Route::get('admin/blogs', 'BlogController@index');
+// Route::get('/admin/blogs', 'BlogController@index')->name('blog.index');
+
+// Route::get('/admin/blogs/create', 'BlogController@create')->name('blog.create');
+
+// Route::get('/admin/blogs/store', 'BlogController@store')->name('blog.store');
+// Route::post('/admin/blogs/store', 'BlogController@store')->name('blog.store');
+
+// Route::get('/admin/blogs/edit', 'BlogController@edit');
+
+
 
 Route::group(['middleware' => 'auth'], function () {
 
+    
     Route::resources([
         'users' => 'UserController',
         'providers' => 'ProviderController',
@@ -84,14 +103,21 @@ Route::group(['middleware' => 'auth'], function () {
         'transactions/transfer' => 'TransferController',
         'methods' => 'MethodController',
         'inventory/blog' => 'BlogController',
-
     ]);
+
+   
     
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
     Route::get('transactions/stats/{year?}/{month?}/{day?}', ['as' => 'transactions.stats', 'uses' => 'TransactionController@stats']);
     Route::get('transactions/{type}', ['as' => 'transactions.type', 'uses' => 'TransactionController@type']);
     Route::get('transactions/{type}/create', ['as' => 'transactions.create', 'uses' => 'TransactionController@create']);
     Route::get('transactions/{transaction}/edit', ['as' => 'transactions.edit', 'uses' => 'TransactionController@edit']);
+
+    Route::resource('admin/blog', BlogController::class)->except(['create', 'update','show']);
+    Route::get('admin/blog/{blog}/create', ['as' => 'inventory.blog.create', 'uses' => 'BlogController@create'])->name('blog.create');
+    Route::post('admin/blog/{blog}', ['as' => 'inventory.blog.store', 'uses' => 'BlogController@store'])->name('blog.store');
+
+    Route::get('/admin/blog/{blog}/edit', ['as' => 'blog.edit','uses' => 'BlogController@edit'])->name('blog.edit');
 
     Route::get('inventory/stats/{year?}/{month?}/{day?}', ['as' => 'inventory.stats', 'uses' => 'InventoryController@stats']);
     Route::resource('inventory/receipts', 'ReceiptController')->except(['edit', 'update']);

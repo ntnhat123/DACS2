@@ -83,6 +83,7 @@
                                 <p>Products</p>
                             </a>
                         </li>
+                        
                         <li @if ($pageSlug == 'categories') class="active " @endif>
                             <a href="{{ route('categories.index') }}">
                                 <i class="tim-icons icon-tag"></i>
@@ -98,14 +99,21 @@
                     </ul>
                 </div>
             </li>
-
             <li @if ($pageSlug == 'clients') class="active " @endif>
                 <a href="{{ route('clients.index') }}">
                     <i class="tim-icons icon-single-02"></i>
                     <p>Clients</p>
                 </a>
             </li>
+            <li @if ($pageSlug == 'blog') class="active " @endif>
+            
+            <li @if ($pageSlug == 'blog') class="active " @endif>
+                <a href="#">
+                    <i class="tim-icons icon-notes"></i>
 
+                    <p>Blog</p>
+                </a>
+            </li>
             <li @if ($pageSlug == 'providers') class="active " @endif>
                 <a href="{{ route('providers.index') }}">
                     <i class="tim-icons icon-delivery-fast"></i>
