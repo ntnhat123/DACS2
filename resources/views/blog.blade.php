@@ -55,7 +55,7 @@
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <img src="assets/img/blog/blog-06-560x345.jpg" alt="Blog Image" class="w-100">
+                                                    <img src="{{asset("/assets/img/blog/".$blog->image) }}" alt="Blog Image" class="w-100">
                                                     <a href="blog-details-image.html" class="item-overlay"></a>
                                                 </figure>
                                             </div>
@@ -204,7 +204,7 @@
                                         </div>
                                     </article> 
                                 </div>
-                                <div class="col-xl-4 col-lg-6 mb--50">
+                                <div class="col-xl-4 col-lg-6 mb--50">      
                                     <article class="blog">
                                         <div class="blog__inner">
                                             <div class="blog__media">

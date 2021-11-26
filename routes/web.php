@@ -32,9 +32,11 @@ use App\Category;
 Route::get('/', function () {
     $products = App\Product::paginate(4);
     $categories = App\ProductCategory::all();
+    $blogs = App\Blog::paginate(3);
     
     return view('index', ["categories"=>$categories,
-        "products"=>$products
+        "products"=>$products,
+        "blogs"=>$blogs
 
     ]);
 });
@@ -43,15 +45,17 @@ Route::get('/index', function () {
     
     $products = App\Product::paginate(4);
     $categories = App\ProductCategory::all();
+    $blogs = App\Blog::paginate(3);
     
     return view('index', ["categories"=>$categories,
-        "products"=>$products
+        "products"=>$products,
+        "blogs"=>$blogs
 
     ]);
 });
 
 Route::get('/blog', function () {
-    $blogs = App\Blog::paginate(4);
+    $blogs = App\Blog::paginate(20);
 
     return view('blog',["blogs"=>$blogs]);
 });
@@ -72,23 +76,18 @@ Route::get('/contact-us', function () {
 Route::get('/product', function () {
     return view('product');
 });
-Route::get('/cart', function () {
-    return view('cart');
-});
 
+
+Route::get('cart','ProductController@cart')->name('cart');
+Route::get('cart/{id}','ProductController@addToCart')->name('add.to.cart');
+Route::post('cart/{id}','ProductController@addToCart')->name('add.to.cart');
+
+Route::get('update-cart', 'ProductController@update')->name('update.cart');
+Route::delete('remove-from-cart','ProductController@remove')->name('remove.from.cart');
 
 Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
-// Route::get('/admin/blogs', 'BlogController@index')->name('blog.index');
-
-// Route::get('/admin/blogs/create', 'BlogController@create')->name('blog.create');
-
-// Route::get('/admin/blogs/store', 'BlogController@store')->name('blog.store');
-// Route::post('/admin/blogs/store', 'BlogController@store')->name('blog.store');
-
-// Route::get('/admin/blogs/edit', 'BlogController@edit');
-
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -116,6 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('admin/blog', BlogController::class)->except(['create', 'update','show']);
     Route::get('admin/blog/{blog}/create', ['as' => 'inventory.blog.create', 'uses' => 'BlogController@create'])->name('blog.create');
     Route::post('admin/blog/{blog}', ['as' => 'inventory.blog.store', 'uses' => 'BlogController@store'])->name('blog.store');
+    Route::post('admin/blog/{blog}', ['as' => 'inventory.blog.delete', 'uses' => 'BlogController@delete'])->name('blog.store');
 
     Route::get('/admin/blog/{blog}/edit', ['as' => 'blog.edit','uses' => 'BlogController@edit'])->name('blog.edit');
 

@@ -96,6 +96,13 @@
                                 <p>Receipts</p>
                             </a>
                         </li>
+                        <li @if ($pageSlug == 'blog') class="active " @endif>
+                            <a href="{{ route('blog.index') }}">
+                                <i class="tim-icons icon-notes"></i>
+            
+                                <p>Blog</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -107,13 +114,7 @@
             </li>
             <li @if ($pageSlug == 'blog') class="active " @endif>
             
-            <li @if ($pageSlug == 'blog') class="active " @endif>
-                <a href="#">
-                    <i class="tim-icons icon-notes"></i>
-
-                    <p>Blog</p>
-                </a>
-            </li>
+            
             <li @if ($pageSlug == 'providers') class="active " @endif>
                 <a href="{{ route('providers.index') }}">
                     <i class="tim-icons icon-delivery-fast"></i>

@@ -151,7 +151,7 @@
                                                     <span class="money">{{$product->price}}</span>
 
                                                 </div>
-                                                <a href="cart.html" class="add-to-cart">
+                                                <a href="{{ route('add.to.cart', $product->id) }}" class="add-to-cart">
                                                     <i class="la la-plus"></i>
                                                     <span>Thêm vào giõ hàng</span>
                                                 </a>
@@ -162,77 +162,7 @@
                             </div>
                         
                             @endforeach
-                                
-                                {{-- <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-02.jpg" alt="Product">
-                                                </figure>
-                                                <a href="/product" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info plr--20">
-                                                <h3 class="product-title"><a href="/product">Sofa Góc Nỉ Norris</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">6.990.000Đ</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Thêm vào giõ hàng</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-03.jpg" alt="Product">
-                                                </figure>
-                                                <a href="/product" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info plr--20">
-                                                <h3 class="product-title"><a href="/product">Sofa Hàn Quốc ALMAALMA</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">7.500.000Đ</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Thêm vào giõ hàng</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
+                         
                             </div>
                         </div>
                     </div>
@@ -343,7 +273,8 @@
                                                                     <span class="money">{{$product->price}}</span>
                 
                                                                 </div>
-                                                                <a href="cart" class="add-to-cart">
+                                                                <a href="{{ route('add.to.cart', $product->id) }}" class="add-to-cart">
+
                                                                     <i class="la la-plus"></i>
                                                                     <span>Thêm vào giõ hàng</span>
                                                                 </a>
@@ -526,121 +457,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="product-details.html" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="product-details.html">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="cart.html" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="product-details.html" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="product-details.html">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="cart.html" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-06-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="product-details.html" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="product-details.html">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="cart.html" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-                                        
+                                       
                                     </div>
                                 </div>
                                 
@@ -1044,51 +861,26 @@
                                 {"breakpoint": 992, "settings": {"slidesToShow": 2}},
                                 {"breakpoint": 768, "settings": {"slidesToShow": 1}}
                             ]'>
+                            @foreach ($blogs as $blog)
+                                
                                 <div class="item">
                                     <article class="blog">
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <img src="assets/img/blog/blog-01.jpg" alt="Blog" class="w-100">
+                                                    <img src="{{asset("/assets/img/blog/".$blog->image) }}" alt="Blog" class="w-100">
                                                     <a href="blog" class="item-overlay"></a>
                                                 </figure>
                                             </div>
                                             <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog">Nội thất Châu Âu - Sang trọng xứng tầm.</a></h2>
+                                                <h2 class="blog__title"><a href="blog">{{$blog->title}}</a></h2>
                                             </div>
                                         </div>
                                     </article>
                                 </div>
-                                <div class="item">
-                                    <article class="blog">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-02.jpg" alt="Blog" class="w-100">
-                                                    <a href="blog" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog">Chia sẻ kinh nghiệm lựa chọn tủ bếp tốt cho gia đình.</a></h2>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="item">
-                                    <article class="blog">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-03.jpg" alt="Blog" class="w-100">
-                                                    <a href="bl" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog">Tô điểm cho ngôi nhà với bộ sưu tập ghế sofa cao cấp.</a></h2>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
+                            
+                            @endforeach
+                                
                             </div>
                         </div>
                     </div>
@@ -1293,42 +1085,28 @@
                     <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
                     <div class="mini-cart__content">
                         <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
+                            @php $total = 0 @endphp
+                            @if(session('cart'))
+                                @foreach(session('cart') as $id => $details)
+                                    @php $total += $details['price'] * $details['quantity'] @endphp
+                                
+                                    <li class="mini-cart__product">
+                                        <a href="{{route('remove.from.cart')}}" class="mini-cart__product-remove remove-from-cart">
+                                            <i class="la la-remove"></i>
+                                        </a>
+                                       
+                                        <div class="mini-cart__product-image">
+                                            <img src="{{asset('assets/img/products/avatar-large-2.jpg')}}" alt="products">
+                                        </div>
+                                       
+                                        <div class="mini-cart__product-content">
+                                            <a class="mini-cart__product-title" href="product-details.html">{{ $details['name'] }}</a>
+                                            <span class="mini-cart__product-quantity">{{ $details['quantity'] }}</span>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endif        
+                           
                         </ul>
                         <div class="mini-cart__total">
                             <span>Subtotal</span>

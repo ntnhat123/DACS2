@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/unnamed.png">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -45,84 +45,43 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
-                                                        <td class="product-thumbnail text-left">
-                                                            <img src="assets/img/products/prod-01-70x88.jpg" alt="Product Thumnail">
-                                                        </td>
-                                                        <td class="product-name text-left wide-column">
-                                                            <h3>
-                                                                <a href="product-details.html">Golden Easy Spot Chair.</a>
-                                                            </h3>
-                                                        </td>
-                                                        <td class="product-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                        <td class="product-quantity">
-                                                            <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="1" min="1">
-                                                            </div>
-                                                        </td>
-                                                        <td class="product-total-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
-                                                        <td class="product-thumbnail text-left">
-                                                            <img src="assets/img/products/prod-02-70x88.jpg" alt="Product Thumnail">
-                                                        </td>
-                                                        <td class="product-name text-left wide-column">
-                                                            <h3>
-                                                                <a href="product-details.html">Golden Easy Spot Chair.</a>
-                                                            </h3>
-                                                        </td>
-                                                        <td class="product-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                        <td class="product-quantity">
-                                                            <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-2" value="1" min="1">
-                                                            </div>
-                                                        </td>
-                                                        <td class="product-total-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
-                                                        <td class="product-thumbnail text-left">
-                                                            <img src="assets/img/products/prod-03-70x88.jpg" alt="Product Thumnail">
-                                                        </td>
-                                                        <td class="product-name text-left wide-column">
-                                                            <h3>
-                                                                <a href="product-details.html">Golden Easy Spot Chair.</a>
-                                                            </h3>
-                                                        </td>
-                                                        <td class="product-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                        <td class="product-quantity">
-                                                            <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-3" value="1" min="1">
-                                                            </div>
-                                                        </td>
-                                                        <td class="product-total-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
+                                                    @php $total = 0 @endphp
+                                                    @if(session('cart'))
+                                                        @foreach(session('cart') as $id => $details)
+                                                            @php $total += $details['price'] * $details['quantity'] @endphp
+                                                             
+                                                            <tr>
+                                                                <td class="product-remove text-left"><a href="{{route('remove.from.cart')}}" class="remove-from-cart"><i class="la la-remove"></i></a></td>
+                                                                <td class="product-thumbnail text-left">
+                                                                    <img src="{{asset('assets/img/products/avatar-large-2.jpg')}}" alt="products">
+
+                                                                </td>
+                                                                <td class="product-name text-left wide-column">
+                                                                    <h3>
+                                                                        <a href="product-details.html">{{ $details['name'] }}</a>
+                                                                    </h3>
+                                                                </td>
+                                                                <td class="product-price">
+                                                                    <span class="product-price-wrapper">
+                                                                        <span class="money">{{ $details['price'] }}</span>
+                                                                    </span>
+                                                                </td>
+                                                                <td class="product-quantity">
+                                                                    <div class="quantity">
+                                                                        
+                                                                        <input type="number" value="{{ $details['quantity'] }}" class="quantity-input" name="qty" id="qty-1" value="1" min="1">
+                                                                    </div>
+                                                                </td>
+                                                                <td class="product-total-price">
+                                                                    <span class="product-price-wrapper">
+                                                                        <span class="money">{{ $details['price'] * $details['quantity'] }}</span>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                          
+                                                        @endforeach
+                                                    @endif 
+                                                  
                                                 </tbody>
                                             </table>
                                         </div>  
@@ -147,133 +106,24 @@
                                 <div class="cart-totals">
                                     <h5 class="font-size-14 font-bold mb--15">Cart totals</h5>
                                     <div class="cart-calculator">
-                                        <div class="cart-calculator__item">
-                                            <div class="cart-calculator__item--head">
-                                                <span>Subtotal</span>
-                                            </div>
-                                            <div class="cart-calculator__item--value">
-                                                <span>$196.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-calculator__item">
-                                            <div class="cart-calculator__item--head">
-                                                <span>Shipping</span>
-                                            </div>
-                                            <div class="cart-calculator__item--value">
-                                                <span>Flat rate: $20.00</span>
-                                                <div class="shipping-calculator-wrap">
-                                                    <a href="#shipping_calculator" class="expand-btn">Calculate Shipping</a>
-                                                    <form id="shipping_calculator" class="form shipping-calculator-form hide-in-default">
-                                                        <div class="form__group">
-                                                            <select id="calc_shipping_country" name="calc_shipping_country" class="nice-select form__input form__input--select">
-                                                                <option value="">Select a country…</option>
-                                                                <option value="AF">Afghanistan</option>
-                                                                <option value="AL">Albania</option>
-                                                                <option value="DZ">Algeria</option>
-                                                                <option value="AR">Argentina</option>
-                                                                <option value="AM">Armenia</option>
-                                                                <option value="AU">Australia</option>
-                                                                <option value="AT">Austria</option>
-                                                                <option value="AZ">Azerbaijan</option>
-                                                                <option value="BH">Bahrain</option>
-                                                                <option value="BD" selected="selected">Bangladesh</option>
-                                                                <option value="BD">Brazil</option>
-                                                                <option value="CN">China</option>
-                                                                <option value="EG">Egypt</option>
-                                                                <option value="FR">France</option>
-                                                                <option value="DE">Germany</option>
-                                                                <option value="HK">Hong Kong</option>
-                                                                <option value="HU">Hungary</option>
-                                                                <option value="IS">Iceland</option>
-                                                                <option value="IN">India</option>
-                                                                <option value="ID">Indonesia</option>
-                                                                <option value="IR">Iran</option>
-                                                                <option value="IQ">Iraq</option>
-                                                                <option value="IE">Ireland</option>
-                                                                <option value="IT">Italy</option>
-                                                                <option value="JP">Japan</option>
-                                                                <option value="KW">Kuwait</option>
-                                                                <option value="MY">Malaysia</option>
-                                                                <option value="MV">Maldives</option>
-                                                                <option value="MX">Mexico</option>
-                                                                <option value="MC">Monaco</option>
-                                                                <option value="NP">Nepal</option>
-                                                                <option value="RU">Russia</option>
-                                                                <option value="KR">South Korea</option>
-                                                                <option value="SS">South Sudan</option>
-                                                                <option value="ES">Spain</option>
-                                                                <option value="LK">Sri Lanka</option>
-                                                                <option value="SD">Sudan</option>
-                                                                <option value="SZ">Swaziland</option>
-                                                                <option value="SE">Sweden</option>
-                                                                <option value="CH">Switzerland</option>
-                                                                <option value="TN">Tunisia</option>
-                                                                <option value="TR">Turkey</option>
-                                                                <option value="UA">Ukraine</option>
-                                                                <option value="AE">United Arab Emirates</option>
-                                                                <option value="GB">United Kingdom (UK)</option>
-                                                                <option value="US">United States (US)</option>
-                                                            </select>
+                                        @php $total = 0 @endphp
+                                        @if(session('cart'))
+                                            @foreach(session('cart') as $id => $details)
+                                                @php $total += $details['price'] * $details['quantity'] @endphp
+                                                 
+                                                    <div class="cart-calculator__item order-total">
+                                                        <div class="cart-calculator__item--head">
+                                                            <span>Total</span>
                                                         </div>
-                                                        <div class="form__group">
-                                                            <select id="calc_shipping_district" name="calc_shipping_district" class="nice-select form__input form__input--select">
-                                                                <option value="">Select a District…</option>
-                                                                <option>BARISAL</option>
-                                                                <option>BHOLA</option>
-                                                                <option>BANDARBAN</option>
-                                                                <option>BRAHMANBARIA</option>
-                                                                <option>CHANDPUR</option>
-                                                                <option>CHITTAGONG</option>
-                                                                <option>COMILLA</option>
-                                                                <option>COX'S BAZAR</option>
-                                                                <option>DHAKA</option>
-                                                                <option>FARIDPUR</option>
-                                                                <option>FENI</option>
-                                                                <option>GAZIPUR</option>
-                                                                <option>GOPALGANJ</option>
-                                                                <option>JAMALPUR</option>
-                                                                <option>KHAGRACHHARI</option>
-                                                                <option>KISHOREGONJ</option>
-                                                                <option>LAKSHMIPU</option>
-                                                                <option>RMADARIPUR</option>
-                                                                <option>MUNSHIGANJ</option>
-                                                                <option>MYMENSINGH</option>
-                                                                <option>NARAYANGANJ</option>
-                                                                <option>NARSINGDI</option>
-                                                                <option>NETRAKONA</option>
-                                                                <option>NOAKHALI</option>
-                                                                <option>RANGAMATI </option>
-                                                                <option>RAJBARI</option>
-                                                                <option>SHARIATPUR</option>
-                                                                <option>SHERPUR</option>
-                                                                <option>TANGAIL</option>
-                                                            </select>
+                                                        <div class="cart-calculator__item--value">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">{{$total}}</span>
+                                                            </span>
                                                         </div>
-                                                        <div class="form__group mb--10">
-                                                            <input type="text" name="calc_shipping_city" id="calc_shipping_city" class="form__input" placeholder="Town / City">
-                                                        </div>
-
-                                                        <div class="form__group mb--10">
-                                                            <input type="text" name="calc_shipping_zip" id="calc_shipping_zip" class="form__input" placeholder="Postcode / Zip">
-                                                        </div>
-
-                                                        <div class="form__group">
-                                                            <input type="submit" value="Update Totals" class="btn btn-size-sm">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-calculator__item order-total">
-                                            <div class="cart-calculator__item--head">
-                                                <span>Total</span>
-                                            </div>
-                                            <div class="cart-calculator__item--value">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$226.00</span>
-                                                </span>
-                                            </div>
-                                        </div>
+                                                    </div>
+                                                       
+                                                @endforeach
+                                            @endif 
                                     </div>
                                 </div>
                                 <a href="checkout.html" class="btn btn-size-md btn-shape-square btn-fullwidth">
@@ -290,184 +140,7 @@
       
 
         <!-- OffCanvas Menu Start -->
-        <div class="offcanvas-menu-wrapper" id="offcanvasMenu">
-            <div class="offcanvas-menu-inner">
-                <a href="" class="btn-close">
-                    <i class="la la-remove"></i>
-                </a>
-                <nav class="offcanvas-navigation">
-                    <ul class="offcanvas-menu">
-                        <li class="menu-item-has-children active">
-                            <a href="#">Home</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="index.html">Homepage 01</a>
-                                </li>
-                                <li>
-                                    <a href="index-02.html">Homepage 02</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="shop.html">Shop</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">
-                                        <span class="mm-text">Shop Grid</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="shop-fullwidth.html">Full Width</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-right-sidebar.html">Right Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-three-columns.html">Three Columns</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-four-columns.html">Four Columns</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Shop List</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="shop-list.html">Full Width</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list-sidebar.html">Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list-right-sidebar.html">Right Sidebar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Product Details</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="product-details.html">Tab Style 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-tab-style-2.html">Tab Style 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-tab-style-3.html">Tab Style 3</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-gallery-left.html">Gallery Left</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-gallery-right.html">Gallery Right</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-sticky-left.html">Sticky Left</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-sticky-right.html">Sticky Right</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-slider-box.html">Slider Box</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-slider-full-width.html">Slider Box Full Width</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-affiliate.html">Affiliate Proudct</a>
-                                        </li>                                                    
-                                        <li>
-                                            <a href="product-details-variable.html">Variable Proudct</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-group.html">Group Product</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="blog.html">Blog</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Blog</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog.html">Blog Right Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-01-column.html">Blog 01 column</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-02-columns.html">Blog 02 columns</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-03-columns.html">Blog 03 columns</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Blog Details</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="blog-details-audio.html">Audio Blog Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details-gallery.html">Gallery Blog Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details-image.html">image Blog Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details-video.html">Video Blog Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Pages</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="my-account.html">My Account</a>
-                                </li>
-                                <li>
-                                    <a href="checkout.html">Checkout</a>
-                                </li>
-                                <li>
-                                    <a href="cart.html">Cart</a>
-                                </li>
-                                <li>
-                                    <a href="compare.html">Compare</a>
-                                </li>
-                                <li>
-                                    <a href="order-tracking.html">Track Order</a>
-                                </li>
-                                <li>
-                                    <a href="wishlist.html">Wishlist</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="contact-us.html">Contact Us</a>
-                        </li>
-                    </ul>
-                    <div class="site-info vertical">
-                        <div class="site-info__item">
-                            <a href="tel:+01223566678"><strong>+01 2235 666 78</strong></a>
-                            <a href="mailto:Support@contixs.com">Support@furtrate.com</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
+       
         <!-- OffCanvas Menu End -->
 
         <!-- Mini Cart Start -->
@@ -699,4 +372,49 @@
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
 
+    @endsection
+ 
+    @section('scripts')
+    <script type="text/javascript">
+      
+        $(".update-cart").change(function (e) {
+            e.preventDefault();
+      
+            var ele = $(this);
+      
+            $.ajax({
+                url: '{{ route('update.cart') }}',
+                method: "patch",
+                data: {
+                    _token: '{{ csrf_token() }}', 
+                    id: ele.parents("tr").attr("data-id"), 
+                    quantity: ele.parents("tr").find(".quantity").val()
+                },
+                success: function (response) {
+                   window.location.reload();
+                }
+            });
+        });
+      
+        $(".remove-from-cart").click(function (e) {
+            e.preventDefault();
+      
+            var ele = $(this);
+      
+            if(confirm("Are you sure want to remove?")) {
+                $.ajax({
+                    url: '{{ route('remove.from.cart') }}',
+                    method: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}', 
+                        id: ele.parents("tr").attr("data-id")
+                    },
+                    success: function (response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+      
+    </script>
     @endsection

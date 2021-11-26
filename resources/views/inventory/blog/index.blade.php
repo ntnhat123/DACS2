@@ -37,13 +37,13 @@
                                         
                                        
                                         <td class="td-actions text-right">
-                                            <a href="{{ route('categories.show', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                            <a href="{{ route('blog.show', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
-                                            <a href="{{ route('categories.edit', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Category">
+                                            <a href="{{ route('blog.edit', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Category">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
-                                            <form action="{{ route('categories.destroy', $blog) }}" method="post" class="d-inline">
+                                            <form action="{{ route('blog.destroy', $blog) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Category" onclick="confirm('Are you sure you want to delete this category? All products belonging to it will be deleted and the records that contain it will not be accurate.') ? this.parentElement.submit() : ''">
