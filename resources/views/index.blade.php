@@ -1110,11 +1110,11 @@
                         </ul>
                         <div class="mini-cart__total">
                             <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
+                            <span class="ammount">{{$total}}</span>
                         </div>
                         <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
+                            <a href="cart" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -1128,7 +1128,7 @@
             <div class="searchform__body">
                 <p>Start typing and press Enter to search</p>
                 <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
+                    <input type="text" name="popup-search search" id="search" class="searchform__input" placeholder="Search Entire Store...">
                     <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
                 </form>
             </div>
@@ -1283,8 +1283,25 @@
  
 
     <!-- ************************* JS Files ************************* -->
+    <script type="text/javascript">
+        var route = "{{ url('autocomplete-search') }}";
 
+        $('#search').typeahead({
+            source: function (query, process) {
+                return $.get(route, {
+                    query: query
+                }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
     <!-- jQuery JS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
+    <script src="/js/app.js"></script>
+
     <script src="assets/js/vendor.js"></script>
 
     <!-- Main JS -->

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductCategory;
 use App\Http\Requests\ProductRequest;
-
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -144,7 +144,18 @@ class ProductController extends Controller
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-  
+    
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        // Search in the title and body columns from the posts table
+        $products = Product::where('name', 'LIKE',  '%' . $search . '%')
+        ->orWhere('price', 'LIKE', "%".$search."%")
+        ->get();
+        // Return the search view with the resluts compacted
+        // lỗi chắc do thiếu mấy dữ liệu khasc, côi trong view m có dùng dữ lioeeuj chi thì glaasyzsx rồi tra về cho view
+        return view('inventory.search.create', ['products' => $products]);
+    }
 
     /**
      * Update the specified resource in storage.

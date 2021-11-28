@@ -8,7 +8,8 @@
                             <figure class="footer-logo mb--30">
                                 <h1>NT Shop</h1>
                             </figure>
-                            <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms. </p>
+                            <p>Chân thành cảm ơn quý khách đã ủng họ chúng tôi .Chúng tôi đang có gắn hoàn thiện chất lượng sản phẩm.</p>
+
                         </div>
                     </div>
                 </div>

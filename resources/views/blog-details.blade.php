@@ -1,13 +1,17 @@
-@extends('layout.app')
 
-@section('content')
-<head>
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/img/icon.png">
-    <link rel="stylesheet" href="assets/css/vendor.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-</head>
-
+<!doctype html>
+<html class="no-js" lang="zxx">
+    @extends('layout.app')
+    @section('content')
+        
+    <head>
+        <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="assets/img/icon.png">
+        <link rel="stylesheet" href="assets/css/vendor.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+    
+ 
     <!-- Preloader Start -->
     <div class="ft-preloader active">
         <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
@@ -18,21 +22,21 @@
     </div>
     <!-- Preloader End -->
 
-   <!-- Main Wrapper Start -->
+    <!-- Main Wrapper Start -->
     <div class="wrapper">
         <!-- Header Start -->
-        
+       
         <!-- Header End -->
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/unnamed.png">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">Contact Us</h1>
+                        <h1 class="page-title">Blog details</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>Contact Us</span></li>
+                            <li class="current"><span>Blog details</span></li>
                         </ul>
                     </div>
                 </div>
@@ -42,79 +46,240 @@
 
         <!-- Main Content Wrapper Start -->
         <main class="main-content-wrapper">
-            <div class="inner-page-content pt--75 pt-md--55">
-                <!-- Contact Area Start -->
-                <section class="contact-area mb--75 mb-md--55">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-5 mb-sm--30">
-                                <div class="heading mb--32">
-                                    <h2>Liên hệ</h2>
-                                    <hr class="delimeter">
+            <div class="inner-page-content ptb--80 ptb-md--60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 order-lg-2 mb-md--50">
+                            <div class="row">
+                                <div class="col-12 mb--45">
+                                    <article class="blog format-standard">
+                                        <div class="blog__inner">
+                                            <div class="blog__media">
+                                                <figure class="image">
+                                                    <img src="assets/img/blog/blog-06.jpg" alt="Blog" class="w-100">
+                                                    <a href="blog-details-image.html" class="item-overlay"></a>
+                                                </figure>
+                                            </div>
+                                            <div class="blog__info">
+                                                <h2 class="blog__title"><a href="blog-details-image.html">There are many variations of passages of Lorem.</a></h2>
+                                                <div class="blog__meta">
+                                                    <span class="posted-on">13 April, 2019</span>
+                                                    <span class="posted-by"><span>By: </span><a href="blog-details-image.html">Robert Joe</a></span>
+                                                </div>
+                                                <div class="blog__desc">
+                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
+                                                </div>
+                                                <a href="blog-details-image.html" class="read-more-btn">Read More</a>
+                                            </div>
+                                        </div>
+                                    </article>                                
                                 </div>
-                                <div class="contact-info mb--20">
-                                    <p><i class="fa fa-map-marker"></i>Hòa Quý,Ngũ Hành Sơn  <br>Đà Nẵng</p>
-                                    <p><i class="fa fa-phone"></i> + 039.211.2298</p>
-                                    <p><i class="fa fa-fax"></i> + 0985.600.240</p>
-                                    <p><i class="fa fa-clock-o"></i> Thứ Hai – Thứ Sáu : 9:00 – 18:00</p>
+                                <div class="col-12 mb--45">
+                                    <article class="blog format-gallery">
+                                        <div class="blog__inner">
+                                            <div class="blog__media">
+                                                <div class="element-carousel" data-slick-options='{
+                                                    "slidesToShow": 1,
+                                                    "slidesToScroll": 1,
+                                                    "autoplay": true,
+                                                    "autoplaySpeed": 1500
+                                                }'>
+                                                    <div class="item">
+                                                        <img src="assets/img/blog/blog-07.jpg" alt="Blog Image" class="w-100">
+                                                        <a href="blog-details-image.html" class="item-overlay"></a>
+                                                    </div> 
+                                                    <div class="item">
+                                                        <img src="assets/img/blog/blog-08.jpg" alt="Blog Image" class="w-100">
+                                                        <a href="blog-details-image.html" class="item-overlay"></a>
+                                                    </div> 
+                                                    <div class="item">
+                                                        <img src="assets/img/blog/blog-09.jpg" alt="Blog Image" class="w-100">
+                                                        <a href="blog-details-image.html" class="item-overlay"></a>
+                                                    </div>                 
+                                                </div>
+                                            </div>
+                                            <div class="blog__info">
+                                                <h2 class="blog__title"><a href="blog-details-gallery.html">There are many variations of passages of Lorem.</a></h2>
+                                                <div class="blog__meta">
+                                                    <span class="posted-on">13 April, 2019</span>
+                                                    <span class="posted-by"><span>By: </span><a href="blog-details-gallery.html">Robert Joe</a></span>
+                                                </div>
+                                                <div class="blog__desc">
+                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
+                                                </div>
+                                                <a href="blog-details-gallery.html" class="read-more-btn">Read More</a>
+                                            </div>
+                                        </div>
+                                    </article>                                   
                                 </div>
-                                <div class="social">
-                                    <a href="https://www.facebook.com" class="social__link">
-                                        <i class="la la-facebook"></i>
-                                    </a>
-                                    <a href="https://www.twitter.com" class="social__link">
-                                        <i class="la la-twitter"></i>
-                                    </a>
-                                    <a href="https://www.plus.google.com" class="social__link">
-                                        <i class="la la-google-plus"></i>
-                                    </a>
+                                <div class="col-12 mb--45">
+                                    <article class="blog format-audio">
+                                        <div class="blog__inner">
+                                            <div class="blog__media">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/182537870&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="blog__info">
+                                                <h2 class="blog__title"><a href="blog-details-audio.html">There are many variations of passages of Lorem.</a></h2>
+                                                <div class="blog__meta">
+                                                    <span class="posted-on">13 April, 2019</span>
+                                                    <span class="posted-by"><span>By: </span><a href="blog-details-audio.html">Robert Joe</a></span>
+                                                </div>
+                                                <div class="blog__desc">
+                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
+                                                </div>
+                                                <a href="blog-details-audio.html" class="read-more-btn">Read More</a>
+                                            </div>
+                                        </div>
+                                    </article>                                
+                                </div>
+                                <div class="col-12 mb--45">
+                                    <article class="blog format-video">
+                                        <div class="blog__inner">
+                                            <div class="blog__media">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="blog__info">
+                                                <h2 class="blog__title"><a href="blog-details-video.html">There are many variations of passages of Lorem.</a></h2>
+                                                <div class="blog__meta">
+                                                    <span class="posted-on">13 April, 2019</span>
+                                                    <span class="posted-by"><span>By: </span><a href="blog-details-video.html">Robert Joe</a></span>
+                                                </div>
+                                                <div class="blog__desc">
+                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
+                                                </div>
+                                                <a href="blog-details-video.html" class="read-more-btn">Read More</a>
+                                            </div>
+                                        </div>
+                                    </article>                                  
+                                </div>
+                                <div class="col-12 mb--45">
+                                    <article class="blog">
+                                        <div class="blog__inner">
+                                            <div class="blog__media">
+                                                <figure class="image">
+                                                    <img src="assets/img/blog/blog-09.jpg" alt="Blog" class="w-100">
+                                                    <a href="blog-details-image.html" class="item-overlay"></a>
+                                                </figure>
+                                            </div>
+                                            <div class="blog__info">
+                                                <h2 class="blog__title"><a href="blog-details-image.html">There are many variations of passages of Lorem.</a></h2>
+                                                <div class="blog__meta">
+                                                    <span class="posted-on">13 April, 2019</span>
+                                                    <span class="posted-by"><span>By: </span><a href="blog-details-image.html">Robert Joe</a></span>
+                                                </div>
+                                                <div class="blog__desc">
+                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
+                                                </div>
+                                                <a href="blog-details-image.html" class="read-more-btn">Read More</a>
+                                            </div>
+                                        </div>
+                                    </article>
                                 </div>
                             </div>
-                            <div class="col-md-7 offset-lg-1">
-                                <div class="heading mb--40">
-                                    <h2>Contact Us</h2>
-                                    <hr class="delimeter">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <ul class="pagination">
+                                        <li><span class="page-number current">1</span></li>
+                                        <li><a href="#" class="page-number">2</a></li>
+                                        <li><span class="dot"></span></li>
+                                        <li><span class="dot"></span></li>
+                                        <li><span class="dot"></span></li>
+                                        <li><a href="#" class="page-number">16</a></li>
+                                    </ul>
                                 </div>
-                                <form action="mail.php" class="form" id="contact-form">
-                                    <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="Email*">
-                                    <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="Name*">
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="Message" id="con_message" name="con_message"></textarea>
-                                    <button type="submit" class="btn btn-shape-round form__submit">Send Request</button>
-                                    <div class="form__output"></div>
-                                </form>
                             </div>
                         </div>
-                    </div>
-                </section>
-                <!-- Contact Area End -->
-
-                <!-- Google Map Area Start -->
-                {{-- <div class="google-map-area">
-                    <div id="google-map">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3835.7154645611085!2d108.2499985!3d15.9762287!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142116396474635%3A0x9e4244ca7e080eb2!2zU8OibiBW4bqtbiDEkOG7mW5nIC0gVklFVEhBTklU!5e0!3m2!1svi!2s!4v1635391295107!5m2!1svi!2s" width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
-                    </div>
-                </div> --}}
-                <div class="travelix_map">
-                    <div id="google_map" class="google_map">
-                        <div class="map_container">
-                            <div id="map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3835.7154645611085!2d108.2499985!3d15.9762287!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142116396474635%3A0x9e4244ca7e080eb2!2zU8OibiBW4bqtbiDEkOG7mW5nIC0gVklFVEhBTklU!5e0!3m2!1svi!2s!4v1635391295107!5m2!1svi!2s" width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="col-lg-3 order-lg-1">
+                            <div class="blog-sidebar pr--15 pr-lg--0">
+                                <div class="bl-widget author">
+                                    <div class="inner">
+                                        <div class="thumb">
+                                            <img src="assets/img/others/team-04.jpg" alt="Author Images">
+                                        </div>
+                                        <div class="info">
+                                            <h5 class="mb--5">Ayo Burion</h5>
+                                            <p class="degne">UI/ Web Designer</p>
+                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                            <ul class="social mb--20">
+                                                <li class="social__item">
+                                                    <a href="https://www.facebook.com" class="social__link">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="social__item">
+                                                    <a href="https://www.twitter.com" class="social__link">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="social__item">
+                                                    <a href="https://www.plus.google.com" class="social__link">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="autor-meta">
+                                                <span>Articles <strong>84</strong></span>
+                                                <span>Comments <strong>490</strong></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bl-widget post mt--50">
+                                    <div class="inner">
+                                        <h5 class="title">Top News</h5>
+                                        <ul class="post-list">
+                                            <li>
+                                                <a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>
+                                                <span><i class="fa fa-clock-o"></i> 3 Days Ago</span>
+                                            </li>
+                                            <li>
+                                                <a href="#">There are many variations of passages of Lorem Ipsum available, </a>
+                                                <span><i class="fa fa-clock-o"></i> 8 Days Ago</span>
+                                            </li>
+                                            <li>
+                                                <a href="#">Lorem Ipsum is simply dummy text of the printing.</a>
+                                                <span><i class="fa fa-clock-o"></i> 4 Days Ago</span>
+                                            </li>
+                                            <li>
+                                                <a href="#">Sed ut perspiciatis unde omnis iste natus error.</a>
+                                                <span><i class="fa fa-clock-o"></i> 6 Days Ago</span>
+                                            </li>
+                                            <li>
+                                                <a href="#">Lorem Ipsum is simply dummy text.</a>
+                                                <span><i class="fa fa-clock-o"></i> 5 Days Ago</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="bl-widget quote mt--50">
+                                    <div class="inner">
+                                        <div class="post-quote">
+                                            <div class="quote-info">
+                                                <i class="fa fa-quote-right"></i>
+                                                <div class="info">
+                                                    <h6 class="mb--0">CLEM OJAK</h6>
+                                                    <span>Designer</span>
+                                                </div>
+                                            </div>
+                                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            
-
-                <!-- Google Map Area End -->
-
-              
             </div>
         </main>
         <!-- Main Content Wrapper End -->
 
-
-        
+        <!-- Footer Start-->
+      
+        <!-- Footer End-->
 
         <!-- OffCanvas Menu Start -->
         <div class="offcanvas-menu-wrapper" id="offcanvasMenu">
@@ -520,207 +685,6 @@
 
     <!-- ************************* JS Files ************************* -->
 
-
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxvP66_Xk1ts77oL2Z7EpDxhDD_jMg-D0"></script>
-    <script>
-        // When the window has finished loading create our google map below
-        google.maps.event.addDomListener(window, 'load', init);
-
-        function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-            var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
-                zoom: 12,
-
-                scrollwheel: false,
-
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(40.740610, -73.935242), // New York
-
-                // How you would like to style the map. 
-                // This is where you would paste any style found on
-
-                styles: [{
-                        "featureType": "water",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#e9e9e9"
-                            },
-                            {
-                                "lightness": 17
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#f5f5f5"
-                            },
-                            {
-                                "lightness": 20
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.fill",
-                        "stylers": [{
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 17
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.stroke",
-                        "stylers": [{
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 29
-                            },
-                            {
-                                "weight": 0.2
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 18
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.local",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 16
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#f5f5f5"
-                            },
-                            {
-                                "lightness": 21
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi.park",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#dedede"
-                            },
-                            {
-                                "lightness": 21
-                            }
-                        ]
-                    },
-                    {
-                        "elementType": "labels.text.stroke",
-                        "stylers": [{
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 16
-                            }
-                        ]
-                    },
-                    {
-                        "elementType": "labels.text.fill",
-                        "stylers": [{
-                                "saturation": 36
-                            },
-                            {
-                                "color": "#333333"
-                            },
-                            {
-                                "lightness": 40
-                            }
-                        ]
-                    },
-                    {
-                        "elementType": "labels.icon",
-                        "stylers": [{
-                            "visibility": "off"
-                        }]
-                    },
-                    {
-                        "featureType": "transit",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#f2f2f2"
-                            },
-                            {
-                                "lightness": 19
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.fill",
-                        "stylers": [{
-                                "color": "#fefefe"
-                            },
-                            {
-                                "lightness": 20
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.stroke",
-                        "stylers": [{
-                                "color": "#fefefe"
-                            },
-                            {
-                                "lightness": 17
-                            },
-                            {
-                                "weight": 1.2
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            // Get the HTML DOM element that will contain your map 
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('google-map');
-
-            // Create the Google Map using our element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
-
-            // Let's also add a marker while we're at it
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(40.740610, -73.935242),
-                map: map,
-                title: 'Contixs',
-                icon: "assets/img/icons/marker.png",
-                animation: google.maps.Animation.BOUNCE
-            });
-        }
-    </script>
     <!-- jQuery JS -->
     <script src="assets/js/vendor.js"></script>
 

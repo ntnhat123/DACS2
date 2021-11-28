@@ -13,9 +13,11 @@
                             <div class="col-4 text-right">
                                 <a href="{{ route('products.index') }}" class="btn btn-sm btn-primary">Back to List</a>
                             </div>
+                           
                         </div>
                     </div>
                     <div class="card-body">
+                        
                         <form method="post" action="{{ route('products.store') }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
 

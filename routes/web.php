@@ -18,6 +18,8 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\UserController;
 use App\Category;
+use App\Product;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,9 @@ Route::get('/index', function () {
 
     ]);
 });
+// Route::get('/autocomplete-search/{$id}', 'ProductController@search')->name('advance_search');
+
+// Route::get('/autocomplete-search', [ProductController::class, 'search']);
 
 Route::get('/blog', function () {
     $blogs = App\Blog::paginate(20);
@@ -74,15 +79,31 @@ Route::get('/contact-us', function () {
     return view('contact-us');
 });
 Route::get('/product', function () {
-    return view('product');
+    $products = App\Product::paginate(4);
+    $categories = App\ProductCategory::all();
+    $blogs = App\Blog::paginate(3);
+    
+    return view('product', ["categories"=>$categories,
+        "products"=>$products,
+        "blogs"=>$blogs
+    ]);
+   
 });
 
+
+Route::get('/inventory/search', 'ProductController@search')->name('search');
+
+Route::get('/blog-details', function () {
+    return view('blog-details');
+});
 
 Route::get('cart','ProductController@cart')->name('cart');
 Route::get('cart/{id}','ProductController@addToCart')->name('add.to.cart');
 Route::post('cart/{id}','ProductController@addToCart')->name('add.to.cart');
 
 Route::get('update-cart', 'ProductController@update')->name('update.cart');
+Route::get('remove-from-cart','ProductController@remove')->name('remove.from.cart');
+
 Route::delete('remove-from-cart','ProductController@remove')->name('remove.from.cart');
 
 Auth::routes();

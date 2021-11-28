@@ -1,22 +1,41 @@
-@extends('layouts.app', ['page' => 'List of Products', 'pageSlug' => 'products', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Search', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
+<div class="container">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-8">
+                <h4 class="card-title">Search</h4>
+            </div>
+            <div class="col-4 text-right">
+                <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New product</a>
+            </div>
+        </div>
+    </div>
 
-{{-- {{dd($products)}} --}}
+    <form method="get" action="{{ route('search') }}" autocomplete="off" enctype="multipart/form-data">
+        @csrf
+        {{-- <input type="text" name="search" placeholder="Search..." required/>
+        <button type="submit">Search</button> --}}
+
+
+        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+            <label class="form-control-label" for="input-name">Search</label>
+            <input  type="text" name="search" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Search..."  required autofocus>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success mt-4">Search</button>
+            </div>
+
+            @include('alerts.feedback', ['field' => 'name'])
+        </div>
+
+    </form>
+</div>
+  <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-8">
-                            <h4 class="card-title">Products</h4>
-                        </div>
-                        <div class="col-4 text-right">
-                            <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New product</a>
-                        </div>
-                        
-                    </div>
-                </div>
+                
                 <div class="card-body">
                     @include('alerts.success')
 
@@ -70,12 +89,9 @@
                     </div>
                 </div>
                
-                <div class="card-footer py-4">
-                    <nav class="d-flex justify-content-end">
-                        {{ $products->links() }}
-                    </nav>
-                </div>
             </div>
         </div>
     </div>
+    </div>   
+
 @endsection
