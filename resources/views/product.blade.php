@@ -65,22 +65,22 @@
                             ]'>
                                 <div class="item">
                                     <figure>
-                                        <img src="assets/img/products/prod-08-700x778.png" alt="product" class="w-100">
+                                        <img src="{{asset("/assets/img/products/".$product->image) }}" alt="product" class="w-100">
                                     </figure>
                                 </div>
                                 <div class="item">
                                     <figure>
-                                        <img src="assets/img/products/prod-09-700x778.png" alt="product" class="w-100">
+                                        <img src="{{asset("/assets/img/products/".$product->image) }}" alt="product" class="w-100">
                                     </figure>
                                 </div>
                                 <div class="item">
                                     <figure>
-                                        <img src="assets/img/products/prod-10-700x778.png" alt="product" class="w-100">
+                                        <img src="{{asset("/assets/img/products/".$product->image) }}" alt="product" class="w-100">
                                     </figure>
                                 </div>
                                 <div class="item">
                                     <figure>
-                                        <img src="assets/img/products/prod-02-700x778.png" alt="product" class="w-100">
+                                        <img src="{{asset("/assets/img/products/".$product->image) }}" alt="product" class="w-100">
                                     </figure>
                                 </div>
                             </div>
@@ -91,71 +91,70 @@
                 <div class="container">
                     <div class="row no-gutters mb--77 mb-md--57">
                         <div class="col-12 mt--50">
-                            <div class="product-summary">
-                                <div class="product-navigation text-right mb--20">
-                                    <a href="#" class="prev"><i class="la la-angle-double-left"></i></a>
-                                    <a href="#" class="next"><i class="la la-angle-double-right"></i></a>
-                                </div>
-                                <div class="product-rating d-flex mb--20">
-                                    <div class="star-rating star-four">
-                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                            
+                 
+                                <div class="product-summary">
+                                    <div class="product-navigation text-right mb--20">
+                                        <a href="#" class="prev"><i class="la la-angle-double-left"></i></a>
+                                        <a href="#" class="next"><i class="la la-angle-double-right"></i></a>
                                     </div>
-                                </div>
-                                <h3 class="product-title mb--20">Golden Easy Spot Chair.</h3>
-                                <p class="product-short-description mb--20">Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                <div class="product-price-wrapper mb--25">
-                                    <span class="money">$200.00</span>
-                                    <span class="price-separator">-</span>
-                                    <span class="money">$400.00</span>
-                                </div>
-                                <form action="#" class="variation-form mb--20">
-                                    <div class="product-size-variations d-flex align-items-center mb--15">
-                                        <p class="variation-label">Size:</p>   
-                                        <div class="product-size-variation variation-wrapper">
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
-                                                    <span class="product-size-variation-label">S</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
-                                                    <span class="product-size-variation-label">M</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
-                                                    <span class="product-size-variation-label">L</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
-                                                    <span class="product-size-variation-label">XL</span>
-                                                </a>
-                                            </div>
-                                        </div>                                 
-                                    </div>
-                                    <a href="" class="reset_variations">Clear</a>
-                                </form>
-                                <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
-                                    <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                        <label class="quantity-label" for="qty">Quantity:</label>
-                                        <div class="quantity">
-                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
+                                    <div class="product-rating d-flex mb--20">
+                                        <div class="star-rating star-four">
+                                            <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-size-sm btn-shape-square" onclick="window.location.href='cart.html'">
-                                        Add To Cart
-                                    </button>
-                                </div>  
-                                <div class="product-footer-meta">
-                                    <p><span>Category:</span> 
-                                        <a href="shop.html">Full Sweater</a>,
-                                        <a href="shop.html">SweatShirt</a>,
-                                        <a href="shop.html">Jacket</a>,
-                                        <a href="shop.html">Blazer</a>
-                                    </p>
+                                    <h3 class="product-title mb--20">{{$product->name}}</h3>
+                                    <div class="product-price-wrapper mb--25">
+                                        <span class="money">{{$product->price}}</span>
+                                        
+                                    </div>
+                                    <form action="#" class="variation-form mb--20">
+                                        <div class="product-size-variations d-flex align-items-center mb--15">
+                                            <p class="variation-label">Size:</p>   
+                                            <div class="product-size-variation variation-wrapper">
+                                                <div class="variation">
+                                                    <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
+                                                        <span class="product-size-variation-label">S</span>
+                                                    </a>
+                                                </div>
+                                                <div class="variation">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
+                                                        <span class="product-size-variation-label">M</span>
+                                                    </a>
+                                                </div>
+                                                <div class="variation">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
+                                                        <span class="product-size-variation-label">L</span>
+                                                    </a>
+                                                </div>
+                                                <div class="variation">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
+                                                        <span class="product-size-variation-label">XL</span>
+                                                    </a>
+                                                </div>
+                                            </div>                                 
+                                        </div>
+                                        <a href="" class="reset_variations">Clear</a>
+                                    </form>
+                                    <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
+                                        <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
+                                            <label class="quantity-label" for="qty">Quantity:</label>
+                                            <div class="quantity">
+                                                <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-size-sm btn-shape-square" onclick="window.location.href='cart.html'">
+                                            Add To Cart
+                                        </button>
+                                    </div>  
+                                    <div class="product-footer-meta">
+                                        <p><span>Category:</span> 
+                                            <a href="">{{$product->category->name }}</a>
+                                            
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                        
                         </div>
                     </div>
                     <div class="row justify-content-center mb--77 mb-md--57">
@@ -175,17 +174,8 @@
                                 <div class="tab-content" id="product-tabContent">
                                     <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                         <div class="product-description">
-                                            <p>Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniaLo ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. iatis unde omnis iste natus error sit voluptatem accusantium </p>
+                                            <p class="product-short-description mb--20">{{$product->description}}</p>
 
-                                            <p>Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniaLo ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                            
-                                            <h5 class="product-description__heading">Characteristics :</h5>
-                                            <ul>
-                                                <li><i class="la la-arrow-right"></i><span>Rsit amet, consectetur adipisicing elit, sed do eiusmod tempor inc.</span></li>
-                                                <li><i class="la la-arrow-right"></i><span>sunt in culpa qui officia deserunt mollit anim id est laborum. </span></li>
-                                                <li><i class="la la-arrow-right"></i><span>Lorem ipsum dolor sit amet, consec do eiusmod tincididu. </span></li>
-                                            </ul>
-                                            
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
@@ -216,29 +206,7 @@
                                     </div>
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
                                         <div class="product-reviews">
-                                            <h3 class="review__title">1 review for Black Blazer</h3>
-                                            <ul class="review__list">
-                                                <li class="review__item">
-                                                    <div class="review__container">
-                                                        <img src="assets/img/others/comment-1.jpg" alt="Review Avatar" class="review__avatar">
-                                                        <div class="review__text">
-                                                            <div class="d-flex flex-sm-row flex-column justify-content-between">
-                                                                <div class="review__meta">
-                                                                    <strong class="review__author">John Snow </strong>
-                                                                    <span class="review__dash">-</span>
-                                                                    <span class="review__published-date">November 20, 2018</span>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div class="star-rating star-five">
-                                                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="review__description">Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            
                                             <div class="review-form-wrapper">
                                                 <div class="row">
                                                     <div class="col-lg-8">
@@ -286,182 +254,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb--75 mb-md--55">
-                        <div class="col-12">
-                            <div class="element-carousel slick-vertical-center" data-slick-options='{
-                                "spaceBetween": 30,
-                                "slidesToShow": 4,
-                                "slidesToScroll": 1,
-                                "arrows": true,
-                                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-angle-double-left" },
-                                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-angle-double-right" }
-                            }'
-                            data-slick-responsive= '[
-                                {"breakpoint":1199, "settings": {
-                                    "slidesToShow": 3
-                                }},
-                                {"breakpoint":991, "settings": {
-                                    "slidesToShow": 2
-                                }},
-                                {"breakpoint":575, "settings": {
-                                    "slidesToShow": 1
-                                }}
-                            ]'>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-02-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -831,7 +624,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="modal-box product-summary">
-                            @foreach ($products as $product)
+                          
                                 
                             <div class="product-navigation text-right mb--20">
                                 <a href="#" class="prev"><i class="la la-angle-double-left"></i></a>
@@ -921,7 +714,7 @@
                                     <a href="shop.html">Blazer</a>
                                 </p>
                             </div>
-                            @endforeach
+                      
 
                         </div>
                     </div>

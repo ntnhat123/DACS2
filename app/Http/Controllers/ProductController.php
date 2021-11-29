@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(5);
-
+        
         return view('inventory.products.index', compact('products'));
     }
 
@@ -73,25 +73,37 @@ class ProductController extends Controller
             ->route('products.index')
             ->withStatus('Product successfully registered.');
     }
+    public function takedata(Request $request){
+        
+        $product = Product::find($request->id);
+        // dd($product);
+        
 
+        return view('product')->with('product', $product);
+
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $product,$id)
 
     {
-        $products = Product::paginate(4);
+        $product = Product::paginate(4);
+        
+        $product = Product::find($id);
 
-
+        
         $solds = $product->solds()->latest()->limit(25)->get();
 
         $receiveds = $product->receiveds()->latest()->limit(25)->get();
 
-        return view('inventory.products.show', compact('product', 'solds', 'receiveds'));
+        return view('inventory.products.show', ['products'=> $product,'solds' => $solds,'receiveds'=>$receiveds]);
     }
+
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -102,10 +114,8 @@ class ProductController extends Controller
     public function edit(Product $product)
 
     {
-        
         $products = Product::all();
         $categories = ProductCategory::all();
-
         return view('inventory.products.edit', compact('product', 'categories'));
     }
 
@@ -228,4 +238,6 @@ class ProductController extends Controller
             ->route('products.index')
             ->withStatus('Product removed successfully.');
     }
+
+    
 }

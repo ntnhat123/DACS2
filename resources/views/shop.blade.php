@@ -108,7 +108,7 @@
                                                                 <figure class="product-image--holder">
                                                                     <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product">
                                                                 </figure>
-                                                                <a href="product" class="product-overlay"></a>
+                                                                <a href="product?id={{$product->id}}" class="product-overlay"></a>
                                                                 <div class="product-action">
                                                                     <a data-toggle="modal" data-target="#productModal" class="action-btn">
                                                                         <i class="la la-eye"></i>
@@ -145,112 +145,113 @@
                                                 @endforeach
                                                   
                                                 </div>
-                                                <nav aria-label="Page navigation example">
-                                                    <span class="hidden">
-                                                     
-                                                        {{ $pages = ceil($products->total() / $products->perPage()) }}
-                                                    </span>
-                                                    @if ($products->total() != 0)
-                
-                                                    <ul class="pagination">
-                                                      <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}">Previous</a></li>
-                                                         @for ($i = 1; $i <= $pages; $i++)
-                                                            <li>
-                                                                
-                                                                <a href = <?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
-                                                            </li>
-                                                         @endfor
-                                                      <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}">Next</a></li>
-                                                    </ul>
-                                                   @endif
-                
-                                                </nav>
+                                                
                                             
                                         </div>
+
+                                        
                                         <div class="ft-product-list">
                                             <div class="product-inner">
-                                                <figure class="product-image">
-                                                    <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-04-270x300.jpg" alt="Products">
-                                                    </a>
-                                                    <div class="product-thumbnail-action">
-                                                        <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
-                                                            <i class="la la-eye"></i>
+                                                @foreach ($products as $product)
+                                                        
+                                                    <figure class="product-image">
+                                                        <a href="product?id={{$product->id}}" >
+                                                            
+
+                                                            <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product">
+
                                                         </a>
-                                                    </div>
-                                                </figure>
-                                                <div class="product-info">
-                                                    <h3 class="product-title mb--25">
-                                                        <a href="product-details.html">Long Cartigen</a>
-                                                    </h3>
-                                                    <div class="ft-product-action-list mb--20">
-                                                        <div class="product-size mb--25">
-                                                            <div class="product-size-swatch">
-                                                                <span class="product-size-swatch-btn variation-btn">
-                                                                    XL
-                                                                </span>
-                                                                <span class="product-size-swatch-btn variation-btn">
-                                                                    L
-                                                                </span>
-                                                                <span class="product-size-swatch-btn variation-btn">
-                                                                    M
-                                                                </span>
-                                                                <span class="product-size-swatch-btn variation-btn">
-                                                                    S
-                                                                </span>
+                                                        <div class="product-thumbnail-action">
+                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
+                                                                <i class="la la-eye"></i>
+                                                            </a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-info">
+                                                        <h3 class="product-title mb--25">
+                                                            <a href="product?id={{$product->id}}">{{$product->name}}</a>
+                                                        </h3>
+                                                        <div class="ft-product-action-list mb--20">
+                                                            <div class="product-size mb--25">
+                                                                <div class="product-size-swatch">
+                                                                    <span class="product-size-swatch-btn variation-btn">
+                                                                        XL
+                                                                    </span>
+                                                                    <span class="product-size-swatch-btn variation-btn">
+                                                                        L
+                                                                    </span>
+                                                                    <span class="product-size-swatch-btn variation-btn">
+                                                                        M
+                                                                    </span>
+                                                                    <span class="product-size-swatch-btn variation-btn">
+                                                                        S
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-color">
+                                                                <div class="product-color-swatch">
+                                                                    <span class="product-color-swatch-btn variation-btn abbey">
+                                                                        Abbey
+                                                                    </span>
+                                                                    <span class="product-color-swatch-btn variation-btn blue">
+                                                                        Blue
+                                                                    </span>
+                                                                    <span class="product-color-swatch-btn variation-btn copper">
+                                                                        Copper
+                                                                    </span>
+                                                                    <span class="product-color-swatch-btn variation-btn old-rose">
+                                                                        Old Rose
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="product-color">
-                                                            <div class="product-color-swatch">
-                                                                <span class="product-color-swatch-btn variation-btn abbey">
-                                                                    Abbey
-                                                                </span>
-                                                                <span class="product-color-swatch-btn variation-btn blue">
-                                                                    Blue
-                                                                </span>
-                                                                <span class="product-color-swatch-btn variation-btn copper">
-                                                                    Copper
-                                                                </span>
-                                                                <span class="product-color-swatch-btn variation-btn old-rose">
-                                                                    Old Rose
-                                                                </span>
-                                                            </div>
+                                                        <div class="product-price-wrapper mb--15 mb-sm--10">
+                                                            <span class="money">$80</span>
+                                                            <span class="money-separator">-</span>
+                                                            <span class="money">$200</span>
                                                         </div>
+                                                        <p class="product-short-description mb--20">
+                                                            Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra
+                                                        </p>  
+                                                        <div class="ft-product-action-list d-flex align-items-center">
+                                                            <a href="cart.html" class="btn btn-size-md">Add To Cart</a>
+                                                            <a href="wishlist.html" class="ml--20 action-btn">
+                                                                <i class="la la-heart-o"></i>
+                                                            </a>
+                                                            <a href="wishlist.html" class="ml--20 action-btn">
+                                                                <i class="la la-repeat"></i>
+                                                            </a>
+                                                        </div>                                            
                                                     </div>
-                                                    <div class="product-price-wrapper mb--15 mb-sm--10">
-                                                        <span class="money">$80</span>
-                                                        <span class="money-separator">-</span>
-                                                        <span class="money">$200</span>
-                                                    </div>
-                                                    <p class="product-short-description mb--20">
-                                                        Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra
-                                                    </p>  
-                                                    <div class="ft-product-action-list d-flex align-items-center">
-                                                        <a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-                                                        <a href="wishlist.html" class="ml--20 action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="ml--20 action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>                                            
-                                                </div>
+                                                @endforeach
+
                                             </div>
                                         </div>
+                                        <nav aria-label="Page navigation example">
+                                            <span class="hidden">
+                                             
+                                                {{ $pages = ceil($products->total() / $products->perPage()) }}
+                                            </span>
+                                            @if ($products->total() != 0)
+        
+                                            <ul class="pagination">
+                                              <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}">Previous</a></li>
+                                                 @for ($i = 1; $i <= $pages; $i++)
+                                                    <li>
+                                                        
+                                                        <a href = <?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
+                                                    </li>
+                                                 @endfor
+                                              <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}">Next</a></li>
+                                            </ul>
+                                           @endif
+        
+                                        </nav>
                                     </div>
                                     
                                 </div>
                             </div>
-                            <nav class="pagination-wrap">
-                                <ul class="pagination">
-                                    <li><span class="page-number current">1</span></li>
-                                    <li><a href="#" class="page-number">2</a></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><a href="#" class="page-number">16</a></li>
-                                </ul>
-                            </nav>
+                            
                         </div>
                         <div class="col-xl-3 col-lg-4 order-lg-1">
                             <aside class="shop-sidebar">

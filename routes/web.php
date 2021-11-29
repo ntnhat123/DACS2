@@ -1,5 +1,6 @@
 <?php
 
+use App\Blog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
@@ -59,44 +60,29 @@ Route::get('/index', function () {
 
 // Route::get('/autocomplete-search', [ProductController::class, 'search']);
 
-Route::get('/blog', function () {
-    $blogs = App\Blog::paginate(20);
-
-    return view('blog',["blogs"=>$blogs]);
-});
 Route::get('/shop', function () {
     
     $products = App\Product::paginate(3);
     $categories = App\ProductCategory::all();
     
     return view('shop', ["categories"=>$categories,
-        "products"=>$products
-
+    "products"=>$products
+    
     ]);
 });
+Route::get('/product','ProductController@takedata');
 
 Route::get('/contact-us', function () {
     return view('contact-us');
 });
-Route::get('/product', function () {
-    $products = App\Product::paginate(4);
-    $categories = App\ProductCategory::all();
-    $blogs = App\Blog::paginate(3);
+
+Route::get('/blog', function () {
+    $blogs = App\Blog::paginate(20);
+
+    return view('blog',["blogs"=>$blogs]);
+});
+Route::get('/blog-details', 'BlogController@datablog');
     
-    return view('product', ["categories"=>$categories,
-        "products"=>$products,
-        "blogs"=>$blogs
-    ]);
-   
-});
-
-
-Route::get('/inventory/search', 'ProductController@search')->name('search');
-
-Route::get('/blog-details', function () {
-    return view('blog-details');
-});
-
 Route::get('cart','ProductController@cart')->name('cart');
 Route::get('cart/{id}','ProductController@addToCart')->name('add.to.cart');
 Route::post('cart/{id}','ProductController@addToCart')->name('add.to.cart');
@@ -125,7 +111,8 @@ Route::group(['middleware' => 'auth'], function () {
         'inventory/blog' => 'BlogController',
     ]);
 
-   
+    Route::get('/inventory/search', 'ProductController@search')->name('search');
+
     
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
     Route::get('transactions/stats/{year?}/{month?}/{day?}', ['as' => 'transactions.stats', 'uses' => 'TransactionController@stats']);

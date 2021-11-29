@@ -6,6 +6,13 @@ use Carbon\Carbon;
 use App\SoldProduct;
 use App\Transaction;
 use App\PaymentMethod;
+use App\Product;
+
+
+
+use Illuminate\Http\Request;
+
+
 
 class HomeController extends Controller
 {
@@ -38,8 +45,10 @@ class HomeController extends Controller
             'semesterexpenses'          => $this->getMonthlyTransactions()->get('semesterexpenses'),
             'semesterincomes'           => $this->getMonthlyTransactions()->get('semesterincomes')
         ]);
-    }
 
+    }
+    
+   
     public function getMethodBalance()
     {
         $methods = PaymentMethod::all();
@@ -127,4 +136,6 @@ class HomeController extends Controller
 
         return collect(compact('lastmonths', 'lastincomes', 'lastexpenses', 'semesterincomes', 'semesterexpenses'));
     }
+    
+    
 }

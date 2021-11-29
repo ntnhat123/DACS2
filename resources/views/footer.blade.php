@@ -68,48 +68,5 @@
             </div>
         </div>
     </div>
-    <div class="footer-middle ptb--40">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-11">
-                    <div class="footer-widget">
-                        <div class="taglist">
-                            <span>Tags:</span>
-                            <a href="#">Minimal eCommerce</a>
-                            <a href="#">Marketing</a>
-                            <a href="#">User Exprience</a>
-                            <a href="#">Ali Express</a>
-                            <a href="#">Web</a>
-                            <a href="#">Digital Expo</a>
-                            <a href="#">Web Search</a>
-                            <a href="#">Affiliate</a>
-                            <a href="#">UCWeb</a>
-                            <a href="#">Support</a>
-                            <a href="#">Template</a>
-                            <a href="#">Best Queality</a>
-                            <a href="#">Mobile</a>
-                            <a href="#">24 Support</a>
-                            <a href="#">Ali Express</a>
-                            <a href="#">Web</a>
-                            <a href="#">Laptop</a>
-                            <a href="#">Web Search</a>
-                            <a href="#">Affiliate</a>
-                            <a href="#">Photoshop</a>
-                            <a href="#">Support</a>
-                            <a href="#">Template</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container-fluid">
-            <div class="row border-top ptb--20">
-                <div class="col-12 text-center">
-                    <p class="copyright-text">Beck &copy; 2019 all rights reserved</p>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 </footer>

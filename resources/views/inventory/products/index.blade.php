@@ -17,6 +17,20 @@
                         
                     </div>
                 </div>
+                <form method="get" action="{{ route('search') }}" autocomplete="off" enctype="multipart/form-data">
+                    @csrf
+                  
+                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                        <label class="form-control-label" for="input-name">Search</label>
+                        <input  type="text" name="search" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Search..."  required autofocus>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success mt-4">Search</button>
+                        </div>
+            
+                        @include('alerts.feedback', ['field' => 'name'])
+                    </div>
+            
+                </form>
                 <div class="card-body">
                     @include('alerts.success')
 
@@ -29,7 +43,7 @@
                                 <th scope="col">Stock</th>
                                 <th scope="col">Faulty</th>
                                 <th scope="col">Total Sold</th>
-                                <th scope="col">Description</th>
+                                <th scope="col" width="300px;">Description</th>
 
                                 <th scope="col">Image</th>
                                 <th scope="col"></th>

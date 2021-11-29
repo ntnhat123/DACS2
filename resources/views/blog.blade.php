@@ -50,183 +50,31 @@
                             <div class="row">
                                 @foreach ($blogs as $blog)
                                     
-                                <div class="col-xl-4 col-lg-6 mb--50">
-                                    <article class="blog format-standard">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="{{asset("/assets/img/blog/".$blog->image) }}" alt="Blog Image" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">{{$blog->title}}</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                   
+                                    <div class="col-xl-4 col-lg-6 mb--50">
+                                        <article class="blog format-standard">
+                                            <div class="blog__inner">
+                                                <div class="blog__media">
+                                                    <figure class="image">
+                                                        <img src="{{asset("/assets/img/blog/".$blog->image) }}" alt="Blog Image" class="w-100">
+                                                        <a href="blog-details?id={{$blog->id}}" class="item-overlay"></a>
+                                                    </figure>
                                                 </div>
-                                                <div class="blog__desc">
-                                                    <p>{{$blog->description}}</p>
+                                                <div class="blog__info">
+                                                    <h2 class="blog__title"><a href="blog-details">{{$blog->title}}</a></h2>
+                                                    <div class="blog__meta">
+                                                        <span class="posted-on">13 April, 2019</span>
+                                                    
+                                                    </div>
+                                                    <div class="blog__desc">
+                                                        <p>{{$blog->description}}</p>
+                                                    </div>
+                                                    <a href="blog-details?id={{$blog->id}}" class="read-more-btn ">Đọc thêm</a>
                                                 </div>
-                                                <a href="blog-details-image.html" class="read-more-btn ">Đọc thêm</a>
                                             </div>
-                                        </div>
-                                    </article>                                    
-                                </div>
+                                        </article>                                    
+                                    </div>
                                 @endforeach
 
-                                {{-- <div class="col-xl-4 col-lg-6 mb--50">
-                                    <article class="blog format-standard">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-06-560x345.jpg" alt="Blog Image" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">Nội thất Châu Âu - Sang trọng xứng tầm</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                   
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Nhà là chốn bình yên để gia chủ trở về sau một ngày làm việc mệt mỏi, bao lo toan muộn phiền hay giông bão sẽ được bỏ lại sau cánh cửa, tận hưởng khoảng khắc yêu thương bên các thành</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn ">Đọc thêm</a>
-                                            </div>
-                                        </div>
-                                    </article>                                    
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb--50">
-                                    <article class="blog format-gallery">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="element-carousel" data-slick-options='{
-                                                    "slidesToShow": 1,
-                                                    "slidesToScroll": 1,
-                                                    "autoplay": true,
-                                                    "autoplaySpeed": 1500
-                                                }'>
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-07-560x345.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div> 
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-08-560x345.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div> 
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-09-560x345.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div>                 
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-gallery.html">Tô điểm cho ngôi nhà với bộ sưu tập ghế sofa cao cấp</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Không gian sống đẳng cấp với phong cách châu Âu lãng mạn là những gì bộ sưu tập ghế sofa cao cấp Carpanese Home mang đến cho gia đình bạn.</p>
-                                                </div>
-                                                <a href="blog-details-gallery.html" class="read-more-btn">Đọc thêm</a>
-                                            </div>
-                                        </div>
-                                    </article>                                  
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb--50">
-                                    <article class="blog format-audio">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/182537870&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-audio.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-audio.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-audio.html" class="read-more-btn">Đọc thêm</a>
-                                            </div>
-                                        </div>
-                                    </article>                                    
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb--50">
-                                    <article class="blog">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-11-560x345.png" alt="Blog" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">Bí quyết chọn sofa cho phòng khách nhỏ</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Với không gian phòng khách nhỏ, việc lựa chọn sofa trở nên không còn đơn giản đối với nhiều gia đình. Nhưng điều đó không có nghĩa là quá khó khăn.</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn">Đọc thêm</a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb--50">
-                                    <article class="blog">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-10-560x345.jpg" alt="Blog" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">Xu hướng lựa chọn bàn ghế sofa cho phòng khách chào đón năm mới 2022</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                  
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Những thiết kế tuyệt đẹp của ghế sofa sẽ mang đến cho bạn sự thoải mái và tạo nên điểm nhấn trong thiết kế căn nhà của bạn. Thế nhưng làm sao để lựa chọn ghế sofa một cách chính xác</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn">Đọc thêm</a>
-                                            </div>
-                                        </div>
-                                    </article> 
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb--50">      
-                                    <article class="blog">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-11-560x345.png" alt="Blog" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">Chọn giường ngủ cao cấp hợp phong thủy</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                   
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Khi lựa chọn giường ngủ, chúng ta không chỉ quan tâm đến sự tiện dụng hay tính thẩm mỹ mà còn nên xem nó có hòa hợp với tuổi, mệnh của mình hay không?</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn">Đọc thêm</a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div> --}}
                             </div>
                             <div class="row">
                                 <div class="col-12 text-center">

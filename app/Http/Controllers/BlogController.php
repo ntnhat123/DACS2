@@ -100,5 +100,14 @@ class BlogController extends Controller
             ->route('inventory.blog.index')
             ->withStatus('Blog successfully removed.');
     }
+    public function datablog(Request $request){
+        
+        $blog = Blog::find($request->id);
+        // dd($blog);
+        
+
+        return view('blog-details')->with('blog', $blog);
+
+    }
 }
 
