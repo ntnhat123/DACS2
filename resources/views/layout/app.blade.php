@@ -158,11 +158,11 @@
                     
                                                         @else
                                                 
-                                                        <a id="dropdown-item" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                        <a id="dropdown-item" class="nav-link dropdown-toggle" style="font-size:15px;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                           {{ Auth::user()->name }}
                                                         </a>
                       
-                                                        <div class="dropdown-item dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                        <div class="dropdown-item dropdown-menu-right" aria-labelledby="navbarDropdown" style="font-size:20px;">
                                                           <a class="dropdown-item" href="{{ route('logout') }}"
                                                              onclick="event.preventDefault();
                                                                            document.getElementById('logout-form').submit();">
@@ -174,7 +174,7 @@
                                                         </div>
                                                         
                                                         @if (Auth::user()->is_admin==1)
-                                                            <a href="admin" class="dropdown-item">Admin</a>
+                                                            <a href="admin" class="dropdown-item" style="font-size:20px;">Admin</a>
 
                                                             
                                                             

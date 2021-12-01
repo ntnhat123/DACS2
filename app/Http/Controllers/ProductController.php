@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Blog;
 use App\ProductCategory;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
@@ -73,15 +74,7 @@ class ProductController extends Controller
             ->route('products.index')
             ->withStatus('Product successfully registered.');
     }
-    public function takedata(Request $request){
-        
-        $product = Product::find($request->id);
-        // dd($product);
-        
-
-        return view('product')->with('product', $product);
-
-    }
+    
     /**
      * Display the specified resource.
      *
@@ -163,8 +156,30 @@ class ProductController extends Controller
         ->orWhere('price', 'LIKE', "%".$search."%")
         ->get();
         // Return the search view with the resluts compacted
-        // lỗi chắc do thiếu mấy dữ liệu khasc, côi trong view m có dùng dữ lioeeuj chi thì glaasyzsx rồi tra về cho view
+      
         return view('inventory.search.create', ['products' => $products]);
+    }
+
+    public function searchindex(Request $request){
+        
+        
+        $search = $request->input('search');
+        $products = Product::where('name', 'LIKE', '%' . $search . '%')->orwhere('price', 'LIKE', '%' . $search .'%')->get();
+
+
+
+
+        // Return the search view with the resluts compacted
+        return view('search_product',['products' => $products])->with('products',$products);
+    }
+
+    
+    public function takedata(Request $request){
+        
+        $product = Product::find($request->id);
+       
+        return view('product')->with('product', $product);
+
     }
 
     /**

@@ -7,6 +7,7 @@ use App\SoldProduct;
 use App\Transaction;
 use App\PaymentMethod;
 use App\Product;
+use App\ProductCategory;
 
 
 
@@ -136,6 +137,5 @@ class HomeController extends Controller
 
         return collect(compact('lastmonths', 'lastincomes', 'lastexpenses', 'semesterincomes', 'semesterexpenses'));
     }
-    
-    
+   
 }

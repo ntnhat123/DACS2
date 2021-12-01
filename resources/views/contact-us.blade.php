@@ -72,29 +72,21 @@
                             </div>
                             <div class="col-md-7 offset-lg-1">
                                 <div class="heading mb--40">
-                                    <h2>Contact Us</h2>
+                                    <h2>Liên hệ chúng tôi</h2>
                                     <hr class="delimeter">
                                 </div>
                                 <form action="mail.php" class="form" id="contact-form">
                                     <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="Email*">
                                     <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="Name*">
                                     <textarea class="form__input form__input--textarea mb--30" placeholder="Message" id="con_message" name="con_message"></textarea>
-                                    <button type="submit" class="btn btn-shape-round form__submit">Send Request</button>
+                                    <button type="submit" class="btn btn-shape-round form__submit">Gửi yêu cầu</button>
                                     <div class="form__output"></div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!-- Contact Area End -->
-
-                <!-- Google Map Area Start -->
-                {{-- <div class="google-map-area">
-                    <div id="google-map">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3835.7154645611085!2d108.2499985!3d15.9762287!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142116396474635%3A0x9e4244ca7e080eb2!2zU8OibiBW4bqtbiDEkOG7mW5nIC0gVklFVEhBTklU!5e0!3m2!1svi!2s!4v1635391295107!5m2!1svi!2s" width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
-                    </div>
-                </div> --}}
+                
                 <div class="travelix_map">
                     <div id="google_map" class="google_map">
                         <div class="map_container">
@@ -104,19 +96,10 @@
                         </div>
                     </div>
                 </div>
-            
-
-                <!-- Google Map Area End -->
-
-              
+          
             </div>
         </main>
-        <!-- Main Content Wrapper End -->
-
-
-        
-
-        <!-- OffCanvas Menu Start -->
+    
         <div class="offcanvas-menu-wrapper" id="offcanvasMenu">
             <div class="offcanvas-menu-inner">
                 <a href="" class="btn-close">

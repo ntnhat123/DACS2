@@ -97,104 +97,7 @@
                 </div>
             </section>
             <!-- Slider area End -->
-            
-            <!-- Top Sale Area Start -->
-            <section class="top-sale-area mb--75 mb-md--55">
-                <div class="container">
-                    <div class="row mb--35 mb-md--23">
-                        <div class="col-12 text-center">
-                            <h2>Doanh số bán hàng cao nhất trong tuần này</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="element-carousel"
-                            data-slick-options='{
-                                "spaceBetween": 30,
-                                "slidesToShow": 3
-                            }'
-                            data-slick-responsive='[
-                                {"breakpoint": 768, "settings": {"slidesToShow": 2}},
-                                {"breakpoint": 480, "settings": {"slidesToShow": 1}}
-                            ]'>
-                            
-                            @foreach ($products as $product)
-                                
-                            <div class="item">
-                                <div class="ft-product">
-                                    <div class="product-inner">
-                                        <div class="product-image">
-                                            <figure class="product-image--holder">
-                                                <img src="{{asset("/assets/img/products/".$product->image) }}" alt="Product">
-                                            </figure>
-                                            <a href="product?id={{$product->id}}" class="product-overlay"></a>
-                                            <div class="product-action">
-                                                <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                    <i class="la la-eye"></i>
-                                                </a>
-                                                <a href="wishlist.html" class="action-btn">
-                                                    <i class="la la-heart-o"></i>
-                                                </a>
-                                                <a href="wishlist.html" class="action-btn">
-                                                    <i class="la la-repeat"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info plr--20">
-                                            {{-- <h3 class="product-title"><a href="/product">Ghế Sofa Băng Giá-TB21</a></h3> --}}
-                                            <h3 class="product-title"><a href="/product">{{$product->name}}</a></h3>
-
-                                            <div class="product-info-bottom">
-                                                <div class="product-price-wrapper">
-                                                    {{-- <span class="money">6.500.000Đ</span> --}}
-                                                    
-                                                    <span class="money">{{$product->price}}</span>
-
-                                                </div>
-                                                <a href="{{ route('add.to.cart', $product->id) }}" class="add-to-cart">
-                                                    <i class="la la-plus"></i>
-                                                    <span>Thêm vào giõ hàng</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            @endforeach
-                         
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Top Sale Area End -->
-
-            <!-- Feature Product Area Start -->
-            <section class="feature-product-area mb--75 mb-md--55">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="feature-product bg-color" data-bg-color="#d7fbf9">
-                                <div class="feature-product__inner bg-color" data-bg-color="#e9fefd">
-                                    <div class="feature-product__info">
-                                        <p class="hastag">#Phong cách mới</p>
-                                        <h2 class="feature-product__title"><a href="/product">Sang trọng mềm</a></h2>
-                                        <a href="/shop" class="feature-product__btn">Mua ngay</a>
-                                    </div>
-                                    <figure class="feature-product__image mb-sm--30">
-                                        <a href="/product">
-                                            <img src="assets/img/banner/banner.jpg" alt="Feature Product">
-                                        </a>
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Feature Product Area End -->
-
+          
             <!-- Product Tab Area Start -->
             <section class="product-tab-area mb--30 mb-md--10">
                 <div class="container">
@@ -208,11 +111,7 @@
                                     <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
                                         <span class="nav-text">Tất cả</A></span>
                                     </a>
-                                    @foreach ($categories as $category)
-                                        <a class="nav-item nav-link" id="new-wooden-tab" data-toggle="tab" href="#new-wooden" role="tab" aria-controls="new-wooden" aria-selected="false">
-                                            <span class="nav-text">{{ $category->name }}</span>
-                                        </a>
-                                    @endforeach
+                                    
                                     
                                     
                                 </div>
@@ -292,7 +191,7 @@
                                
                                 @foreach ($products as $product)
 
-                                <div class="tab-pane fade" id="new-wooden" role="tabpanel" aria-labelledby="{{ $category->name }}">
+                                <div class="tab-pane fade" id="new-wooden" role="tabpanel" aria-labelledby="">
                                     <div class="row">
                                         <div class="col-lg-3 col-sm-6 mb--45">
                                             <div class="ft-product HTfadeInUp">
@@ -340,28 +239,7 @@
                                 
                                 
                                 @endforeach
-
-                                
-                                <nav aria-label="Page navigation example">
-                                    <span class="hidden">
-                                     
-                                        {{ $pages = ceil($products->total() / $products->perPage()) }}
-                                    </span>
-                                    @if ($products->total() != 0)
-
-                                    <ul class="pagination">
-                                      <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}">Previous</a></li>
-                                         @for ($i = 1; $i <= $pages; $i++)
-                                            <li>
-                                                
-                                                <a href = <?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
-                                            </li>
-                                         @endfor
-                                      <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}">Next</a></li>
-                                    </ul>
-                                   @endif
-
-                                </nav>
+ 
 
                             </div>
                         </div>
@@ -403,63 +281,9 @@
             </section>
             <!-- Best Sale Product Area End -->
 
-            <!-- Blog Area Start -->
-            <section class="blog-area mb--70 mb-md--50">
-                <div class="container">
-                    <div class="row mb--35 mb-md--23">
-                        <div class="col-12 text-center">
-                            <h2>Tin tức &amp; Cập nhật</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="element-carousel" data-slick-options='{
-                                "spaceBetween": 30,
-                                "slidesToShow": 3,
-                                "slidesToScroll": 1
-                            }'
-                            data-slick-responsive='[
-                                {"breakpoint": 992, "settings": {"slidesToShow": 2}},
-                                {"breakpoint": 768, "settings": {"slidesToShow": 1}}
-                            ]'>
-                            @foreach ($blogs as $blog)
-                                
-                                <div class="item">
-                                    <article class="blog">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="{{asset("/assets/img/blog/".$blog->image) }}" alt="Blog" class="w-100">
-                                                    <a href="blog" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog">{{$blog->title}}</a></h2>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            
-                            @endforeach
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Blog Area End -->
-        </main>
-        <!-- Main Content Wrapper End -->
-
-        <!-- Footer Start-->
-        
-        <!-- Footer End-->
-
-        <!-- OffCanvas Menu Start -->
        
-        <!-- OffCanvas Menu End -->
-
-        <!-- Mini Cart Start -->
+        </main>
+       
         <aside class="mini-cart" id="miniCart">
             <div class="mini-cart-wrapper">
                 <div class="mini-cart__close">

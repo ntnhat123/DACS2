@@ -15,10 +15,7 @@
 
     <form method="get" action="{{ route('search') }}" autocomplete="off" enctype="multipart/form-data">
         @csrf
-        {{-- <input type="text" name="search" placeholder="Search..." required/>
-        <button type="submit">Search</button> --}}
-
-
+      
         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
             <label class="form-control-label" for="input-name">Search</label>
             <input  type="text" name="search" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Search..."  required autofocus>

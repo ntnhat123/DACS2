@@ -257,50 +257,17 @@
                             <aside class="shop-sidebar">
                                 <div class="shop-widget mb--40">
                                     <h3 class="widget-title mb--25">Category</h3>
-                                    <ul class="widget-list category-list">
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="category-title">Winter Collection</span>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="category-title">Women’s Clothes</span>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="category-title">Men’s Clothes</span>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="category-title">Kid’s Clothes</span>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="category-title">Uncategorized</span>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="category-title">Accessories</span>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="category-title">New Arrival</span>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    @foreach ($categories as $category)
+                                    
+                                        <ul class="widget-list category-list">
+                                            <li>
+                                                <a href="shop.html">
+                                                    <span class="category-title">{{$category->name}}</span>
+                                                    <i class="fa fa-angle-double-right"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    @endforeach
                                 </div>
                                 <div class="shop-widget mb--40">
                                     <h3 class="widget-title mb--30">Color</h3>

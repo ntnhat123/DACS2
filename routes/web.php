@@ -42,7 +42,7 @@ Route::get('/', function () {
         "blogs"=>$blogs
 
     ]);
-});
+})->name('searchindex');
 
 Route::get('/index', function () {
     
@@ -55,10 +55,7 @@ Route::get('/index', function () {
         "blogs"=>$blogs
 
     ]);
-});
-// Route::get('/autocomplete-search/{$id}', 'ProductController@search')->name('advance_search');
-
-// Route::get('/autocomplete-search', [ProductController::class, 'search']);
+})->name('searchindex');
 
 Route::get('/shop', function () {
     
@@ -67,7 +64,6 @@ Route::get('/shop', function () {
     
     return view('shop', ["categories"=>$categories,
     "products"=>$products
-    
     ]);
 });
 Route::get('/product','ProductController@takedata');
@@ -82,6 +78,8 @@ Route::get('/blog', function () {
     return view('blog',["blogs"=>$blogs]);
 });
 Route::get('/blog-details', 'BlogController@datablog');
+
+Route::get('/searchproduct', 'ProductController@searchindex')->name('searchindex');
     
 Route::get('cart','ProductController@cart')->name('cart');
 Route::get('cart/{id}','ProductController@addToCart')->name('add.to.cart');
@@ -94,11 +92,11 @@ Route::delete('remove-from-cart','ProductController@remove')->name('remove.from.
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
 
 
 Route::group(['middleware' => 'auth'], function () {
-
+    
+    Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
     
     Route::resources([
         'users' => 'UserController',
