@@ -6,6 +6,7 @@ use App\Product;
 use App\Blog;
 use App\ProductCategory;
 use App\Http\Requests\ProductRequest;
+use App\Cart;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -226,17 +227,25 @@ class ProductController extends Controller
             ->withStatus('Product updated successfully.');
     }
 
-    public function remove(ProductRequest $request)
+    public function remove(Request $request)
     {
-        if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('success', 'Product removed successfully');
-        }
-        return $request->delete();
+        dd($request->id);
+        
+        // if($request->id) {
+        //     $cart = session()->get('cart');
+        //     Product::remove($request->id);
+
+        //     if(isset($cart[$request->id])) {
+        //         unset($cart[$request->id]);
+        //         session()->put('cart', $cart);
+        //     }
+        //     session()->flash('success', 'Product removed successfully');
+        // }
+        // return $request->id;
+        Product::remove($request->id);
+        session()->flash('success', 'Item Cart Remove Successfully !');
+
+        return redirect()->route('remove.from.cart');
     }
 
     /**

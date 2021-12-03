@@ -88,7 +88,7 @@ Route::post('cart/{id}','ProductController@addToCart')->name('add.to.cart');
 Route::get('update-cart', 'ProductController@update')->name('update.cart');
 Route::get('remove-from-cart','ProductController@remove')->name('remove.from.cart');
 
-Route::delete('remove-from-cart','ProductController@remove')->name('remove.from.cart');
+
 
 Auth::routes();
 
