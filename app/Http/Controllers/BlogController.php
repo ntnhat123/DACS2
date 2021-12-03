@@ -18,7 +18,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(25);
+        $blogs = Blog::paginate(4);
 
         return view('inventory.blog.index', compact('blogs'));
     }
@@ -103,9 +103,7 @@ class BlogController extends Controller
     public function datablog(Request $request){
         
         $blog = Blog::find($request->id);
-        // dd($blog);
-        
-
+    
         return view('blog-details')->with('blog', $blog);
 
     }

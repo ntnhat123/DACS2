@@ -139,13 +139,6 @@
 
       
 
-        <!-- OffCanvas Menu Start -->
-       
-        <!-- OffCanvas Menu End -->
-
-        <!-- Mini Cart Start -->
-        
-        <!-- Mini Cart End -->
 
         <!-- Searchform Popup Start -->
         <div class="searchform__popup" id="searchForm">

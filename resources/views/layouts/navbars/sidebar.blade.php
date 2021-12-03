@@ -7,7 +7,7 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a data-toggle="collapse" href="#transactions" {{ $section ?? '' == 'transactions' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-bank" ></i>
                     <span class="nav-link-text">Transactions</span>
@@ -60,7 +60,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
             <li>
                 <a data-toggle="collapse" href="#inventory" {{ $section ?? '' == 'inventory' ? 'aria-expanded=true' : '' }}>
@@ -116,12 +116,12 @@
             <li @if ($pageSlug == 'blog') class="active " @endif>
             
             
-            <li @if ($pageSlug == 'providers') class="active " @endif>
+            {{-- <li @if ($pageSlug == 'providers') class="active " @endif>
                 <a href="{{ route('providers.index') }}">
                     <i class="tim-icons icon-delivery-fast"></i>
                     <p>Providers</p>
                 </a>
-            </li>
+            </li> --}}
 
             <li @if ($pageSlug == 'methods') class="active " @endif>
                 <a href="{{ route('methods.index') }}">

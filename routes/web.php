@@ -72,6 +72,8 @@ Route::get('/contact-us', function () {
     return view('contact-us');
 });
 
+
+
 Route::get('/blog', function () {
     $blogs = App\Blog::paginate(20);
 

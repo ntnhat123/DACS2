@@ -15,7 +15,7 @@ class ProductCategoryController extends Controller
      */
     public function index(ProductCategory $model)
     {
-        $categories = ProductCategory::paginate(25);
+        $categories = ProductCategory::paginate(3);
 
         return view('inventory.categories.index', compact('categories'));
     }

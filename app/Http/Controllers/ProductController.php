@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::paginate(3);
         
         return view('inventory.products.index', compact('products'));
     }
@@ -158,7 +158,7 @@ class ProductController extends Controller
         ->get();
         // Return the search view with the resluts compacted
       
-        return view('inventory.search.create', ['products' => $products]);
+        return view('inventory.search.create')->with('products',$products);
     }
 
     public function searchindex(Request $request){
