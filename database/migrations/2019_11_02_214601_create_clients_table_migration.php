@@ -16,13 +16,13 @@ class CreateClientsTableMigration extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('document_type', 1)->default('V');
-            $table->integer('document_id')->unique();
+            $table->integer('document_id');
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->timestamp('last_purchase')->nullable();
             $table->unsignedInteger('total_purchases')->default(0);
-            $table->unsignedDecimal('total_paid')->default(0.00);
+            $table->unsignedDecimal('total_paid')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

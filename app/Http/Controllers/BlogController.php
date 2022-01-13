@@ -18,7 +18,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(4);
+        $blogs = Blog::paginate(10);
 
         return view('inventory.blog.index', compact('blogs'));
     }
@@ -42,10 +42,27 @@ class BlogController extends Controller
      */
     public function store(Request $request,Blog $blog)
     {
+        // $blog->title=$request->input('title');
+        // $blog->description=$request->input('description');
+        // if ($request->hasfile('image')) {
+        //     $file = $request->file('image');
+        //     $extension = $file->getClientoriginalExtension(); // getting image extension
+        //     $filename = time(). '.' . $extension;
+        //     $file->move('/assets/img/blog/', $filename);
+        //     $blog = Blog::create([
+                
+        //         'image'=> $filename,
+               
+        //     ]);
+        // } else{
+        //     return $request;
+            
+        // }
         
+
         $blog->create($request->all());
         
-        return redirect()->route('inventory.blog.index')->withStatus('Successfully registered blog.');
+        return redirect()->route('inventory.blog.index')->withStatus('Thêm blog thành công.');
     }
 
     /**
@@ -67,7 +84,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view('inventory.blog.edit', compact('blogs'));
+        return view('inventory.blog.edit')->with('blog', $blog);
     }
 
     /**
@@ -83,7 +100,7 @@ class BlogController extends Controller
 
         return redirect()
             ->route('inventory.blog.index')
-            ->withStatus('Successfully modified blog.');
+            ->withStatus('Cập nhật thành công.');
     }
 
     /**
@@ -98,7 +115,7 @@ class BlogController extends Controller
 
         return redirect()
             ->route('inventory.blog.index')
-            ->withStatus('Blog successfully removed.');
+            ->withStatus('Xóa thành công.');
     }
     public function datablog(Request $request){
         

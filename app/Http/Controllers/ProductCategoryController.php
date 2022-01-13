@@ -13,7 +13,7 @@ class ProductCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProductCategory $model)
+    public function index()
     {
         $categories = ProductCategory::paginate(3);
 
@@ -42,7 +42,7 @@ class ProductCategoryController extends Controller
 
         return redirect()
             ->route('categories.index')
-            ->withStatus('Category successfully created.');
+            ->withStatus('Danh mục đã được tạo thành công.');
     }
 
     /**
@@ -83,7 +83,7 @@ class ProductCategoryController extends Controller
 
         return redirect()
             ->route('categories.index')
-            ->withStatus('Category successfully updated.');
+            ->withStatus('Cập nhật danh mục thành công.');
     }
 
     /**
@@ -98,6 +98,6 @@ class ProductCategoryController extends Controller
 
         return redirect()
             ->route('categories.index')
-            ->withStatus('Category successfully deleted.');
+            ->withStatus('Xóa thành công danh mục.');
     }
 }

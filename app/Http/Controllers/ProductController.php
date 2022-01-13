@@ -7,6 +7,7 @@ use App\Blog;
 use App\ProductCategory;
 use App\Http\Requests\ProductRequest;
 use App\Cart;
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -18,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(3);
+        $products = Product::paginate(5);
         
         return view('inventory.products.index', compact('products'));
     }
@@ -55,7 +56,7 @@ class ProductController extends Controller
         
         if ($request->hasfile('image')) {
             $file = $request->file('image');
-             $extension = $file->getClientoriginalExtension(); // getting image extension
+            $extension = $file->getClientoriginalExtension(); // getting image extension
             $filename = time(). '.' . $extension;
             $file->move('assets/img/products/', $filename);
             $product = Product::create([
@@ -73,7 +74,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product successfully registered.');
+            ->withStatus('Sản phẩm được thêm thành công.');
     }
     
     /**
@@ -164,8 +165,9 @@ class ProductController extends Controller
     public function searchindex(Request $request){
         
         
-        $search = $request->input('search');
-        $products = Product::where('name', 'LIKE', '%' . $search . '%')->orwhere('price', 'LIKE', '%' . $search .'%')->get();
+        $search = $request->input('search');    
+        $products = Product::where('name', 'LIKE', '%' . $search . '%')
+        ->orwhere('price', 'LIKE', '%' . $search .'%')->get();
 
 
 
@@ -183,6 +185,7 @@ class ProductController extends Controller
 
     }
 
+    
     /**
      * Update the specified resource in storage.
      *
@@ -194,16 +197,16 @@ class ProductController extends Controller
     {
        
         
-       $product->name= $request->input('name');
-       $product->description= $request->input('description');
-       $product->stock= $request->input('stock');
-       $product->stock_defective= $request->input('stock_defective');
-       $product->price= $request->input('price');
-       $product->product_category_id= $request->input('product_category_id');
+        $product->name= $request->input('name');
+        $product->description= $request->input('description');
+        $product->stock= $request->input('stock');
+        $product->stock_defective= $request->input('stock_defective');
+        $product->price= $request->input('price');
+        $product->product_category_id= $request->input('product_category_id');
         
         if ($request->hasfile('image')) {
             $file = $request->file('image');
-             $extension = $file->getClientoriginalExtension(); // getting image extension
+            $extension = $file->getClientoriginalExtension(); // getting image extension
             $filename = time(). '.' . $extension;
             $file->move('/assets/img/products/', $filename);
 
@@ -213,39 +216,32 @@ class ProductController extends Controller
         }
         $product->update($request->all());
         
-        //gio hang
-        if($request->id && $request->quantity){
-            $cart = session()->get('cart');
-            $cart[$request->id]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
-        }
         
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product updated successfully.');
+            ->withStatus('Cập nhật sản phẩm thành công.');
     }
 
     public function remove(Request $request)
     {
-        dd($request->id);
+        //dd($request->id);
         
-        // if($request->id) {
-        //     $cart = session()->get('cart');
-        //     Product::remove($request->id);
+        if($request->id) {
+            $cart = session()->get('cart');
+            Product::remove($request->id);
 
-        //     if(isset($cart[$request->id])) {
-        //         unset($cart[$request->id]);
-        //         session()->put('cart', $cart);
-        //     }
-        //     session()->flash('success', 'Product removed successfully');
-        // }
-        // return $request->id;
-        Product::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Xóa sản phẩm thành công.');
+        }
+        return $request->id;
+        // Product::remove($request->id);
+        // session()->flash('success', 'Item Cart Remove Successfully !');
 
-        return redirect()->route('remove.from.cart');
+        // return redirect()->route('remove.from.cart');
     }
 
     /**
@@ -260,7 +256,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product removed successfully.');
+            ->withStatus('Xóa sản  phẩm thành công.');
     }
 
     

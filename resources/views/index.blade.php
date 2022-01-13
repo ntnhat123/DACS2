@@ -148,7 +148,7 @@
                                                 <div class="product-price-wrapper">
                                                     {{-- <span class="money">6.500.000Đ</span> --}}
                                                     
-                                                    <span class="money">{{$product->price}}</span>
+                                                    <span class="money">{{$product->price}} đ</span>
 
                                                 </div>
                                                 <a href="{{ route('add.to.cart', $product->id) }}" class="add-to-cart">
@@ -265,7 +265,7 @@
                                                                     <div class="product-price-wrapper">
                                                                         {{-- <span class="money">6.500.000Đ</span> --}}
                                                                         
-                                                                        <span class="money">{{$product->price}}</span>
+                                                                        <span class="money">{{$product->price}} đ</span>
                     
                                                                     </div>
                                                                     <a href="{{ route('add.to.cart', $product->id) }}" class="add-to-cart">
@@ -449,17 +449,7 @@
             </section>
             <!-- Blog Area End -->
         </main>
-        <!-- Main Content Wrapper End -->
-
-        <!-- Footer Start-->
-        
-        <!-- Footer End-->
-
-        <!-- OffCanvas Menu Start -->
-       
-        <!-- OffCanvas Menu End -->
-
-        <!-- Mini Cart Start -->
+     
         <aside class="mini-cart" id="miniCart">
             <div class="mini-cart-wrapper">
                 <div class="mini-cart__close">
@@ -673,19 +663,7 @@
  
 
     <!-- ************************* JS Files ************************* -->
-    <script type="text/javascript">
-        var route = "{{ url('autocomplete-search') }}";
-
-        $('#search').typeahead({
-            source: function (query, process) {
-                return $.get(route, {
-                    query: query
-                }, function (data) {
-                    return process(data);
-                });
-            }
-        });
-    </script>
+   
     <!-- jQuery JS -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>

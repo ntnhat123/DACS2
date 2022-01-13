@@ -38,10 +38,10 @@
                                                     <tr>
                                                         <th>&nbsp;</th>
                                                         <th>&nbsp;</th>
-                                                        <th class="text-left">Product</th>
-                                                        <th>price</th>
-                                                        <th>quantity</th>
-                                                        <th>total</th>
+                                                        <th class="text-left">Sản phẩm</th>
+                                                        <th>Giá</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Tổng</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -88,15 +88,10 @@
                                     </div>
                                 </div>
                                 <div class="row no-gutters border-top pt--20 mt--20">
-                                    <div class="col-sm-6">
-                                        <div class="coupon">
-                                            <input type="text" id="coupon" name="coupon" class="cart-form__input" placeholder="Coupon Code">
-                                            <button type="submit" class="cart-form__btn">Apply Coupon</button>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-sm-6 text-sm-right">
-                                        <button type="submit"  class="cart-form__btn">Clear Cart</button>
-                                        <button type="submit" href="{{route('update.cart')}}" class="cart-form__btn">Update Cart</button>
+                                        <button type="submit"  class="cart-form__btn">Dọn dẹp giõ hàng</button>
+                                        <button type="submit" href="{{route('update.cart')}}" class="cart-form__btn">Cập nhật giỏ hàng</button>
                                     </div>
                                 </div>
                             </form>
@@ -104,7 +99,7 @@
                         <div class="col-lg-4">
                             <div class="cart-collaterals">
                                 <div class="cart-totals">
-                                    <h5 class="font-size-14 font-bold mb--15">Cart totals</h5>
+                                    <h5 class="font-size-14 font-bold mb--15">Tổng số giõ hàng</h5>
                                     <div class="cart-calculator">
                                         @php $total = 0 @endphp
                                         @if(session('cart'))
@@ -113,7 +108,7 @@
                                                  
                                                     <div class="cart-calculator__item order-total">
                                                         <div class="cart-calculator__item--head">
-                                                            <span>Total</span>
+                                                            <span>Tổng cộng</span>
                                                         </div>
                                                         <div class="cart-calculator__item--value">
                                                             <span class="product-price-wrapper">
@@ -127,7 +122,7 @@
                                     </div>
                                 </div>
                                 <a href="index" class="btn btn-size-md btn-shape-square btn-fullwidth">
-                                    Proceed To Checkout
+                                    Tiến hành  kiểm tra
                                 </a>
                             </div>
                         </div>

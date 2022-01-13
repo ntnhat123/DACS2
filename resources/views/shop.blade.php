@@ -129,7 +129,7 @@
                                                                     <div class="product-price-wrapper">
                                                                         {{-- <span class="money">6.500.000Đ</span> --}}
                                                                         
-                                                                        <span class="money">{{$product->price}}</span>
+                                                                        <span class="money">{{$product->price}} đ</span>
                     
                                                                     </div>
                                                                     <a href="cart" class="add-to-cart">
@@ -261,7 +261,7 @@
                                     
                                         <ul class="widget-list category-list">
                                             <li>
-                                                <a href="shop.html">
+                                                <a href="#">
                                                     <span class="category-title">{{$category->name}}</span>
                                                     <i class="fa fa-angle-double-right"></i>
                                                 </a>
@@ -269,87 +269,7 @@
                                         </ul>
                                     @endforeach
                                 </div>
-                                <div class="shop-widget mb--40">
-                                    <h3 class="widget-title mb--30">Color</h3>
-                                    <div class="widget-color">
-                                        <a href="shop.html" class="red">Red</a>
-                                        <a href="shop.html" class="pink">Pink</a>
-                                        <a href="shop.html" class="black">black</a>
-                                        <a href="shop.html" class="brown">brown</a>
-                                        <a href="shop.html" class="blue">blue</a>
-                                        <a href="shop.html" class="cholate">cholate</a>
-                                        <a href="shop.html" class="copper">copper</a>
-                                        <a href="shop.html" class="gray">grey</a>
-                                    </div>
-                                </div>
-                                <div class="shop-widget mb--40">
-                                    <h3 class="widget-title mb--25">Price</h3>
-                                    <ul class="widget-list price-list">
-                                        <li>
-                                            <a href="shop.html">
-                                                <span>Low - Medium</span>
-                                                <strong class="font-weight-medium">$10.00 - $45.00</strong>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span>Medium - High</span>
-                                                <strong class="font-weight-medium">$45.00 - $60.00</strong>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span>High - Avobe</span>
-                                                <strong class="font-weight-medium">$60.00 - $200</strong>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="shop-widget mb--40">
-                                    <h3 class="widget-title mb--25">Brand</h3>
-                                    <ul class="widget-list brand-list">
-                                        <li>
-                                            <a href="shop.html">
-                                                <span>Walmart</span>
-                                                <strong class="color--red font-weight-medium">10</strong>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span>Yellow</span>
-                                                <strong class="color--red font-weight-medium">50</strong>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span>H &amp; M</span>
-                                                <strong class="color--red font-weight-medium">46</strong>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span>Black &amp; White</span>
-                                                <strong class="color--red font-weight-medium">46</strong>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="shop-widget">
-                                    <h3 class="widget-title mb--25">Tag</h3>
-                                    <div class="tagcloud">
-                                        <a href="shop.html">Cloth</a>
-                                        <a href="shop.html">Blazer</a>
-                                        <a href="shop.html">Jacket</a>
-                                        <a href="shop.html">Polo Shirt</a>
-                                        <a href="shop.html">T-Shirt</a>
-                                        <a href="shop.html">Shoes</a>
-                                        <a href="shop.html">Pant</a>
-                                        <a href="shop.html">Party Dress</a>
-                                        <a href="shop.html">Coktail Dress</a>
-                                        <a href="shop.html">Sweater</a>
-                                        <a href="shop.html">Jeans</a>
-                                    </div>
-                                </div>
+                              
                             </aside>
                         </div>
                     </div>
@@ -553,50 +473,36 @@
                     <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
                     <div class="mini-cart__content">
                         <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
+                            @php $total = 0 @endphp
+                            @if(session('cart'))
+                                @foreach(session('cart') as $id => $details)
+                                    @php $total += $details['price'] * $details['quantity'] @endphp
+                                
+                                    <li class="mini-cart__product">
+                                        <a href="{{route('remove.from.cart')}}" class="mini-cart__product-remove remove-from-cart">
+                                            <i class="la la-remove"></i>
+                                        </a>
+                                       
+                                        <div class="mini-cart__product-image">
+                                            <img src="{{asset('assets/img/products/avatar-large-2.jpg')}}" alt="products">
+                                        </div>
+                                       
+                                        <div class="mini-cart__product-content">
+                                            <a class="mini-cart__product-title" href="product-details.html">{{ $details['name'] }}</a>
+                                            <span class="mini-cart__product-quantity">{{ $details['quantity'] }}</span>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endif        
+                           
                         </ul>
                         <div class="mini-cart__total">
                             <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
+                            <span class="ammount">{{$total}}</span>
                         </div>
                         <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
+                            <a href="cart" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
+                            
                         </div>
                     </div>
                 </div>

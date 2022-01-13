@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'List of Categories', 'pageSlug' => 'categories', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'New Blog', 'pageSlug' => 'blogs', 'section' => 'inventory'])
 
 @section('content')
     <div class="row">
@@ -11,7 +11,7 @@
                             <h4 class="card-title">Blogs</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{route('blog.create')}}" class="btn btn-sm btn-primary">New Blogs</a>
+                            <a href="{{route('blog.create')}}" class="btn btn-sm btn-primary">Thêm Blogs</a>
                         </div>
                     </div>
                 </div>
@@ -21,9 +21,10 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">Title</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Image</th>
+                                <th scope="col" width="400px;">Tiêu đề</th>
+                                <th scope="col" width="550px;">Mô tả</th>
+
+                                <th scope="col">Ảnh</th>
                                 
                                 <th scope="col"></th>
                             </thead>
@@ -37,16 +38,16 @@
                                         
                                        
                                         <td class="td-actions text-right">
-                                            <a href="{{ route('blog.show', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                            <a href="{{ route('blog.show', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Xem chi tiết">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
-                                            <a href="{{ route('blog.edit', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Category">
+                                            <a href="{{ route('blog.edit', $blog) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Sửa danh mục">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
                                             <form action="{{ route('blog.destroy', $blog) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Category" onclick="confirm('Are you sure you want to delete this category? All products belonging to it will be deleted and the records that contain it will not be accurate.') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Xóa" onclick="confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?') ? this.parentElement.submit() : ''">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>
@@ -57,11 +58,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer py-4">
-                    <nav class="d-flex justify-content-end" aria-label="...">
-                        {{ $blogs->links() }}
-                    </nav>
-                </div>
+               
             </div>
         </div>
     </div>

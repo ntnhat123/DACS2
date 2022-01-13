@@ -61,13 +61,13 @@
                                             <ul class="mainmenu">
                                                 <li class="mainmenu__item menu-item-has-children">
                                                     <a href="/index" class="mainmenu__link">
-                                                        <span class="mm-text">Home</span>
+                                                        <span class="mm-text">Trang chủ</span>
                                                     </a>
                                                     
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children megamenu-holder">
                                                     <a href="/shop" class="mainmenu__link">
-                                                        <span class="mm-text">Shop</span>
+                                                        <span class="mm-text">Cửa hàng</span>
                                                     </a>
                                                     
                                                 </li>
@@ -77,46 +77,10 @@
                                                     </a>
                                                   
                                                 </li>
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="#" class="mainmenu__link">
-                                                        <span class="mm-text">Pages</span>
-                                                    </a>
-                                                    <ul class="sub-menu">
-                                                        <li>
-                                                            <a href="my-account.html">
-                                                                <span class="mm-text">My Account</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="checkout.html">
-                                                                <span class="mm-text">Checkout</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="cart.html">
-                                                                <span class="mm-text">Cart</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="compare.html">
-                                                                <span class="mm-text">Compare</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="order-tracking.html">
-                                                                <span class="mm-text">Track Order</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="wishlist.html">
-                                                                <span class="mm-text">Wishlist</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                               
                                                 <li class="mainmenu__item">
                                                     <a href="/contact-us" class="mainmenu__link">
-                                                        <span class="mm-text">Contact Us</span>
+                                                        <span class="mm-text">Liên hệ</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -146,13 +110,13 @@
                                                         @guest
                                                         @if (Route::has('login'))
                                                      
-                                                          <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                                          <a class="dropdown-item" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a>
                                                       
                                                         @endif
                       
                                                          @if (Route::has('register'))
                                                     
-                                                          <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                          <a class="dropdown-item" href="{{ route('register') }}">{{ __('Đăng ký') }}</a>
                                                     
                                                         @endif
                     

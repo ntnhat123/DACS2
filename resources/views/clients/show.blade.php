@@ -30,15 +30,15 @@
                                 <td>{{ $client->email }}</td>
                                 <td>
                                     @if ($client->balance > 0)
-                                        <span class="text-success">{{ format_money($client->balance) }}</span>
+                                        <span class="text-success">{{ ($client->balance) }}</span>
                                     @elseif ($client->balance < 0.00)
-                                        <span class="text-danger">{{ format_money($client->balance) }}</span>
+                                        <span class="text-danger">{{ ($client->balance) }}</span>
                                     @else
-                                        {{ format_money($client->balance) }}
+                                        {{ ($client->balance) }}
                                     @endif
                                 </td>
                                 <td>{{ $client->sales->count() }}</td>
-                                <td>{{ format_money($client->transactions->sum('amount')) }}</td>
+                                <td>{{ ($client->transactions->sum('amount')) }}</td>
                                 <td>{{ (empty($client->sales)) ? date('d-m-y', strtotime($client->sales->reverse()->first()->created_at)) : 'N/A' }}</td>
                             </tr>
                         </tbody>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="row">
-    <div class="col-md-6">
+    {{-- <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -82,9 +82,9 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -119,7 +119,7 @@
                                     <td>{{ date('d-m-y', strtotime($sale->created_at)) }}</td>
                                     <td>{{ $sale->products->count() }}</td>
                                     <td>{{ $sale->products->sum('qty') }}</td>
-                                    <td>{{ format_money($sale->products->sum('total_amount')) }}</td>
+                                    <td>{{ $sale->products->sum('total_amount') }}</td>
                                     <td>{{ ($sale->finalized_at) ? 'FINISHED' : 'ON HOLD' }}</td>
                                     <td class="td-actions text-right">
                                         <a href="{{ route('sales.show', $sale) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">

@@ -23,6 +23,12 @@ class ClientController extends Controller
         return view('clients.index', compact('clients'));
     }
 
+    public function oder(){
+       return view('oder');
+    }
+    public function order(){
+        dd('lol');
+     }
     /**
      * Show the form for creating a new resource.
      *
@@ -105,4 +111,5 @@ class ClientController extends Controller
 
         return view('clients.transactions.add', compact('client','payment_methods'));
     }
+    
 }

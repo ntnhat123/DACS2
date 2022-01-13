@@ -8,10 +8,10 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">Edit Category</h3>
+                                <h3 class="mb-0">Sửa danh mục</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('categories.index') }}" class="btn btn-sm btn-primary">Back to List</a>
+                                <a href="{{ route('categories.index') }}" class="btn btn-sm btn-primary">Quay lại</a>
                             </div>
                         </div>
                     </div>
@@ -20,10 +20,10 @@
                             @csrf
                             @method('put')
 
-                            <h6 class="heading-small text-muted mb-4">Category Information</h6>
+                            <h6 class="heading-small text-muted mb-4">Thông tin danh mục</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">Name</label>
+                                    <label class="form-control-label" for="input-name">Tên</label>
                                     <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name', $category->name) }}" required autofocus>
                                     @include('alerts.feedback', ['field' => 'name'])
                                 </div>

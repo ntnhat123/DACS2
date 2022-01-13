@@ -66,7 +66,18 @@ Route::get('/shop', function () {
     "products"=>$products
     ]);
 });
-Route::get('/product','ProductController@takedata');
+Route::get('/product','ProductController@takedata')->name('takedata');
+Route::post('/product','ProductController@takedata')->name('takedata');
+
+
+
+Route::get('/oder','ClientController@oder');
+Route::get('/order','ClientController@order');
+
+
+
+
+
 
 Route::get('/contact-us', function () {
     return view('contact-us');
@@ -122,10 +133,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('admin/blog', BlogController::class)->except(['create', 'update','show']);
     Route::get('admin/blog/{blog}/create', ['as' => 'inventory.blog.create', 'uses' => 'BlogController@create'])->name('blog.create');
+    Route::get('admin/blog/{blog}/create', ['as' => 'inventory.blog.edit', 'uses' => 'BlogController@create'])->name('blog.update');
+
     Route::post('admin/blog/{blog}', ['as' => 'inventory.blog.store', 'uses' => 'BlogController@store'])->name('blog.store');
     Route::post('admin/blog/{blog}', ['as' => 'inventory.blog.delete', 'uses' => 'BlogController@delete'])->name('blog.store');
 
-    Route::get('/admin/blog/{blog}/edit', ['as' => 'blog.edit','uses' => 'BlogController@edit'])->name('blog.edit');
+    Route::get('/admin/blog/{blog}/edit', ['as' => 'inventory.blog.edit','uses' => 'BlogController@edit'])->name('blog.edit');
 
     Route::get('inventory/stats/{year?}/{month?}/{day?}', ['as' => 'inventory.stats', 'uses' => 'InventoryController@stats']);
     Route::resource('inventory/receipts', 'ReceiptController')->except(['edit', 'update']);
@@ -136,7 +149,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['put', 'patch'], 'inventory/receipts/{receipt}/product/{receivedproduct}', ['as' => 'receipts.product.update', 'uses' => 'ReceiptController@updateproduct']);
     Route::delete('inventory/receipts/{receipt}/product/{receivedproduct}', ['as' => 'receipts.product.destroy', 'uses' => 'ReceiptController@destroyproduct']);
 
-    
     Route::resource('sales', 'SaleController')->except(['edit', 'update']);
     Route::get('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
     Route::get('sales/{sale}/product/add', ['as' => 'sales.product.add', 'uses' => 'SaleController@addproduct']);

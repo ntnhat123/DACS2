@@ -221,7 +221,7 @@
                                                         {{-- <h3 class="product-title"><a href="product-details.html">{{$product->description}}</a></h3> --}}
                                                         <div class="product-info-bottom">
                                                             <div class="product-price-wrapper">
-                                                                <span class="money">{{$product->price}}</span>
+                                                                <span class="money">{{$product->price}} đ</span>
                                                             </div>
                                                             <a href="cart" class="add-to-cart pr--15">
                                                                 <i class="la la-plus"></i>

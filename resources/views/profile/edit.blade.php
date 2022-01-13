@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="title">Edit Profile</h5>
+                    <h5 class="title">Chỉnh sửa hồ sơ</h5>
                 </div>
                 <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
                     <div class="card-body">
@@ -15,8 +15,8 @@
                             @include('alerts.success')
 
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name', auth()->user()->name) }}">
+                                <label>Tên</label>
+                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Tên" value="{{ old('name', auth()->user()->name) }}">
                                 @include('alerts.feedback', ['field' => 'name'])
                             </div>
 
@@ -27,14 +27,14 @@
                             </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                        <button type="submit" class="btn btn-fill btn-primary">Lưu</button>
                     </div>
                 </form>
             </div>
 
             <div class="card">
                 <div class="card-header">
-                    <h5 class="title">Password</h5>
+                    <h5 class="title">Mật khẩu</h5>
                 </div>
                 <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
                     <div class="card-body">
@@ -44,23 +44,23 @@
                         @include('alerts.success', ['key' => 'password_status'])
 
                         <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
-                            <label>Current password</label>
-                            <input type="password" name="old_password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="Current password" value="" required>
+                            <label>Mật khẩu hiện tại</label>
+                            <input type="password" name="old_password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="Mật khẩu hiện tại" value="" required>
                             @include('alerts.feedback', ['field' => 'old_password'])
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                            <label>New Password</label>
-                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="New password" value="" required>
+                            <label>Mật khẩu mới</label>
+                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Mật khẩu mới" value="" required>
                             @include('alerts.feedback', ['field' => 'password'])
                         </div>
                         <div class="form-group">
-                            <label>Confirm new password</label>
-                            <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm new password" value="" required>
+                            <label>Xác nhận mật khẩu mới</label>
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="Xác nhận mật khẩu mới" value="" required>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-primary">Change Password</button>
+                        <button type="submit" class="btn btn-fill btn-primary">Đổi mật khẩu</button>
                     </div>
                 </form>
             </div>
@@ -75,7 +75,7 @@
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
                             <a href="#">
-                                <img class="avatar" src="{{ asset('assets/img/emilyz.jpg') }}" alt="">
+                                <img class="avatar" src="{{ asset('assets/img/user.png') }}" alt="">
                                 <h5 class="title">{{ auth()->user()->name }}</h5>
                             </a>
                             <p class="description"></p>

@@ -68,7 +68,7 @@
                                         <img src="{{asset("/assets/img/products/".$product->image) }}" alt="product" class="w-100">
                                     </figure>
                                 </div>
-                                <div class="item">
+                                {{-- <div class="item">
                                     <figure>
                                         <img src="{{asset("/assets/img/products/".$product->image) }}" alt="product" class="w-100">
                                     </figure>
@@ -82,7 +82,7 @@
                                     <figure>
                                         <img src="{{asset("/assets/img/products/".$product->image) }}" alt="product" class="w-100">
                                     </figure>
-                                </div>
+                                </div> --}}
                             </div>
                             <!-- Product Slider End -->
                         </div>
@@ -105,37 +105,10 @@
                                     </div>
                                     <h3 class="product-title mb--20">{{$product->name}}</h3>
                                     <div class="product-price-wrapper mb--25">
-                                        <span class="money">{{$product->price}}</span>
+                                        <span class="money">{{$product->price}} đ </span>
                                         
                                     </div>
-                                    <form action="#" class="variation-form mb--20">
-                                        <div class="product-size-variations d-flex align-items-center mb--15">
-                                            <p class="variation-label">Size:</p>   
-                                            <div class="product-size-variation variation-wrapper">
-                                                <div class="variation">
-                                                    <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
-                                                        <span class="product-size-variation-label">S</span>
-                                                    </a>
-                                                </div>
-                                                <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
-                                                        <span class="product-size-variation-label">M</span>
-                                                    </a>
-                                                </div>
-                                                <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
-                                                        <span class="product-size-variation-label">L</span>
-                                                    </a>
-                                                </div>
-                                                <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
-                                                        <span class="product-size-variation-label">XL</span>
-                                                    </a>
-                                                </div>
-                                            </div>                                 
-                                        </div>
-                                        <a href="" class="reset_variations">Clear</a>
-                                    </form>
+                                  
                                     <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                         <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                             <label class="quantity-label" for="qty">Quantity:</label>
@@ -143,9 +116,75 @@
                                                 <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-size-sm btn-shape-square" onclick="window.location.href='cart.html'">
-                                            Add To Cart
+                                        <button type="button" class="btn btn-size-sm btn-shape-square" data-bs-toggle="modal" data-bs-target="#muahang" >
+                                            Mua hàng
                                         </button>
+                                        <!-- The Modal -->
+                                            <div class="modal fade" id="muahang">
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                            
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4>Thông tin khi mua hàng</h4>
+                                                        <button type="button" class="btn-close" style="margin-left: 435px;" data-bs-dismiss="modal"></button>
+                                                    </div>
+                                            
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="{{ route('clients.store') }}" autocomplete="off" >
+                                                            @csrf
+                                                            
+                                                            <div class="pl-lg-4">
+                                                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} ">
+                                                                    <label class="form-control-label" for="input-name">Tên</label>
+                                                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Nhập tên..." value="{{ old('name') }}" required autofocus >
+                                                                    @include('alerts.feedback', ['field' => 'name'])
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-1">
+                                                                        <label class="form-control-label" for="input-document_type">Màu</label>
+                                                                        <select name="document_type" id="input-document_type" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+                                                                            @foreach (['V', 'E', 'P', 'RIF'] as $document_type)
+                                                                                @if($document_type == old('document_type'))
+                                                                                    <option value="{{$document_type}}" selected>{{$document_type}}</option>
+                                                                                @else
+                                                                                    <option value="{{$document_type}}">{{$document_type}}</option>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <label class="form-control-label" for="input-document_id">Số lượng mua</label>
+                                                                        <input type="number" name="document_id" id="input-document_id" class="form-control form-control-alternative{{ $errors->has('document_id') ? ' is-invalid' : '' }}" placeholder="Số lượng mua" value="{{ old('document_id') }}" required>
+                                                                        @include('alerts.feedback', ['field' => 'document_id'])
+                                
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                                                                    <label class="form-control-label" for="input-email">Email</label>
+                                                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" value="{{ old('email') }}" required>
+                                                                    @include('alerts.feedback', ['field' => 'email'])
+                                                                </div>
+                                                                <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                                                                    <label class="form-control-label" for="input-phone">Số điện thoại</label>
+                                                                    <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="Số điện thoại" value="{{ old('phone') }}" required>
+                                                                    @include('alerts.feedback', ['field' => 'phone'])
+                                                                </div>
+                                
+                                
+                                                                <div class="text-center">
+                                                                    <button type="submit" class="btn btn-success mt-4">Lưu</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                            
+                                                    <!-- Modal footer -->
+                                                   
+                                                </div>
+                                                </div>
+                                            </div>
                                     </div>  
                                     <div class="product-footer-meta">
                                         <p><span>Category:</span> 
@@ -162,13 +201,13 @@
                             <div class="tab-style-2">
                                 <div class="nav nav-tabs mb--35 mb-sm--25" id="product-tab" role="tablist">
                                     <a class="nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true"> 
-                                        <span>Description</span>
+                                        <span>Sự mô tả</span>
                                     </a>
                                     <a class="nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
-                                        <span>Additional Information</span>
+                                        <span>Thông tin thêm</span>
                                     </a>
                                     <a class="nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
-                                        <span>Reviews(1)</span>
+                                        <span>Nhận xét</span>
                                     </a>
                                 </div>
                                 <div class="tab-content" id="product-tabContent">
@@ -183,21 +222,21 @@
                                             <table class="table shop_attributes">
                                                 <tbody>
                                                     <tr>
-                                                        <th>Weight</th>
+                                                        <th>Trọng lượng</th>
                                                         <td>57 kg</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Dimensions</th>
+                                                        <th>Kích thước</th>
                                                         <td>160 × 152 × 110 cm</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Color</th>
+                                                        <th>Màu sắc</th>
                                                         <td>
-                                                            <a href="shop.html">Black</a>,
-                                                            <a href="shop.html">Gray</a>,
-                                                            <a href="shop.html">Red</a>,
-                                                            <a href="shop.html">Violet</a>,
-                                                            <a href="shop.html">Yellow</a>
+                                                            <a href="shop.html">Đen</a>,
+                                                            
+                                                            <a href="shop.html">Đỏ</a>,
+                                                            <a href="shop.html">Vàng</a>,
+                                                            <a href="shop.html">Trắng</a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -210,13 +249,13 @@
                                             <div class="review-form-wrapper">
                                                 <div class="row">
                                                     <div class="col-lg-8">
-                                                        <span class="reply-title">Add a review</span>
+                                                        <span class="reply-title">THÊM MỘT BÀI ĐÁNH GIÁ</span>
                                                         <form action="#" class="form pr--30">
                                                             <div class="form-notes mb--20">
-                                                                <p>Your email address will not be published. Required fields are marked <span class="required">*</span></p>
+                                                                <p>Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu  <span class="required">*</span></p>
                                                             </div>
                                                             <div class="form__group mb--10 pb--1">
-                                                                <label class="form__label d-block" >Your Ratings</label>
+                                                                <label class="form__label d-block" >Xếp hạng của bạn</label>
                                                                 <div class="rating">
                                                                     <span><i class="la la-star"></i></span>
                                                                     <span><i class="la la-star"></i></span>
@@ -226,11 +265,11 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form__group mb--10">
-                                                                <label class="form__label d-block" for="email">Your Review<span class="required">*</span></label>
+                                                                <label class="form__label d-block" for="email">Đánh giá của bạn <span class="required">*</span></label>
                                                                 <textarea name="review" id="review" class="form__input form__input--textarea"></textarea>
                                                             </div>
                                                             <div class="form__group mb--20">
-                                                                <label class="form__label d-block" for="name">Name<span class="required">*</span></label>
+                                                                <label class="form__label d-block" for="name">Tên<span class="required">*</span></label>
                                                                 <input type="text" name="name" id="name" class="form__input">
                                                             </div>
                                                             <div class="form__group mb--20">
@@ -240,7 +279,7 @@
                                                             <div class="form__group">
                                                                 <div class="form-row">
                                                                     <div class="col-12">
-                                                                        <input type="submit" value="Submit Now" class="btn btn-size-md">
+                                                                        <input type="submit" value="Xác nhận bây giờ" class="btn btn-size-md">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -261,120 +300,7 @@
         <!-- Main Content Wrapper End -->
 
         <!-- Footer Start-->
-        <footer class="footer bg-color" data-bg-color="#f4f8fa">
-            <div class="footer-top">
-                <div class="container-fluid">
-                    <div class="row border-bottom pt--70 pb--70">
-                        <div class="col-lg-3 col-sm-6 offset-md-1 offset-lg-0 mb-md--45">
-                            <div class="footer-widget">
-                                <div class="textwidget">
-                                    <figure class="footer-logo mb--30">
-                                        <img src="assets/img/logo/logo.png" alt="Logo">
-                                    </figure>
-                                    <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-3 offset-lg-1 offset-sm-2 mb-md--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Company</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="index.html">About Us</a></li>
-                                        <li><a href="blog.html">Blogs</a></li>
-                                        <li><a href="#">Careers</a></li>
-                                        <li><a href="contact-us.html">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 offset-md-1 offset-lg-0 mb-xs--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Product</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Pricing</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Customers</a></li>
-                                        <li><a href="#">Demos</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 mb-xs--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Helps</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Introduction</a></li>
-                                        <li><a href="#">Feedback</a></li>
-                                        <li><a href="#">Referals</a></li>
-                                        <li><a href="#">Network Status</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Social Network</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Facebook</a></li>
-                                        <li><a href="#">Twitter</a></li>
-                                        <li><a href="#">Linkedin</a></li>
-                                        <li><a href="#">Google +</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-middle ptb--40">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-11">
-                            <div class="footer-widget">
-                                <div class="taglist">
-                                    <span>Tags:</span>
-                                    <a href="#">Minimal eCommerce</a>
-                                    <a href="#">Marketing</a>
-                                    <a href="#">User Exprience</a>
-                                    <a href="#">Ali Express</a>
-                                    <a href="#">Web</a>
-                                    <a href="#">Digital Expo</a>
-                                    <a href="#">Web Search</a>
-                                    <a href="#">Affiliate</a>
-                                    <a href="#">UCWeb</a>
-                                    <a href="#">Support</a>
-                                    <a href="#">Template</a>
-                                    <a href="#">Best Queality</a>
-                                    <a href="#">Mobile</a>
-                                    <a href="#">24 Support</a>
-                                    <a href="#">Ali Express</a>
-                                    <a href="#">Web</a>
-                                    <a href="#">Laptop</a>
-                                    <a href="#">Web Search</a>
-                                    <a href="#">Affiliate</a>
-                                    <a href="#">Photoshop</a>
-                                    <a href="#">Support</a>
-                                    <a href="#">Template</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="container-fluid">
-                    <div class="row border-top ptb--20">
-                        <div class="col-12 text-center">
-                            <p class="copyright-text">Beck &copy; 2019 all rights reserved</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+     
         <!-- Footer End-->
 
         <!-- OffCanvas Menu Start -->
