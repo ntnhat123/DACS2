@@ -116,11 +116,11 @@
                                                 <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-size-sm btn-shape-square" data-bs-toggle="modal" data-bs-target="#muahang" >
-                                            Mua hàng
+                                        <button type="button" class="btn btn-size-sm btn-shape-square"  data-bs-toggle="modal" data-bs-target="#muahang" >
+                                           <a href="oder">Mua hàng</a> 
                                         </button>
                                         <!-- The Modal -->
-                                            <div class="modal fade" id="muahang">
+                                            {{-- <div class="modal fade" id="muahang">
                                                 <div class="modal-dialog">
                                                 <div class="modal-content">
                                             
@@ -184,7 +184,7 @@
                                                    
                                                 </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                     </div>  
                                     <div class="product-footer-meta">
                                         <p><span>Category:</span> 

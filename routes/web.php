@@ -72,7 +72,8 @@ Route::post('/product','ProductController@takedata')->name('takedata');
 
 
 Route::get('/oder','ClientController@oder');
-Route::get('/order','ClientController@order');
+
+Route::post('/orderclient','ClientController@orderclient');
 
 
 

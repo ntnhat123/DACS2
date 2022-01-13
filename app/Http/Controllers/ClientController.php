@@ -7,6 +7,7 @@ use App\Client;
 use App\Transaction;
 use App\PaymentMethod;
 use Illuminate\Http\Request;
+
 use App\Http\Requests\ClientRequest;
 
 class ClientController extends Controller
@@ -26,8 +27,17 @@ class ClientController extends Controller
     public function oder(){
        return view('oder');
     }
-    public function order(){
-        dd('lol');
+    public function orderclient(Request $request){
+
+          Client::create([
+            'name' => $request->name,
+            
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'document_type'=> $request->document_type,
+            'document_id' => $request->document_id,
+          ]);
+        return redirect()->back();
      }
     /**
      * Show the form for creating a new resource.
@@ -49,7 +59,7 @@ class ClientController extends Controller
     {
         $client->create($request->all());
         
-        return redirect()->route('clients.index')->withStatus('Successfully registered customer.');
+        return redirect()->route('clients.index')->withStatus('Khách hàng đã đăng ký thành công.');
     }
 
     /**
@@ -87,7 +97,8 @@ class ClientController extends Controller
 
         return redirect()
             ->route('clients.index')
-            ->withStatus('Successfully modified customer.');
+            ->withStatus('Khách hàng đã sửa đổi thành công.');
+
     }
 
     /**
@@ -102,7 +113,7 @@ class ClientController extends Controller
 
         return redirect()
             ->route('clients.index')
-            ->withStatus('Customer successfully removed.');
+            ->withStatus('Khách hàng đã xóa thành công.');
     }
 
     public function addtransaction(Client $client)

@@ -38,7 +38,7 @@
                         
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    <form method="get" action="/order"  >
+                                    <form method="post" action="/orderclient"  >
                                         @csrf
                                         
                                         <div class="pl-lg-5">
