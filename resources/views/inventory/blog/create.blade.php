@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'New Blog', 'pageSlug' => 'blogs', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Blog mới', 'pageSlug' => 'blogs', 'section' => 'inventory'])
 
 @section('content')
    

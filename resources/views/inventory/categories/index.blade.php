@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Dánh sách thể loại', 'pageSlug' => 'categories', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Danh sách Danh mục', 'pageSlug' => 'categories', 'section' => 'inventory'])
 
 @section('content')
     <div class="row">
@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Thể loại</h4>
+                            <h4 class="card-title">Danh mục</h4>
                         </div>
                         <div class="col-4 text-right">
                             <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">Thêm danh mục</a>
@@ -22,8 +22,8 @@
                             <thead class=" text-primary">
                                 <th scope="col">Tên</th>
                                 <th scope="col">Sản phẩm</th>
-                               
-                                <th scope="col">Giá trung bình của sản phẩm</th>
+{{--                                
+                                <th scope="col">Giá trung bình của sản phẩm</th> --}}
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
@@ -32,7 +32,7 @@
                                         <td>{{ $category->name }}</td>
                                         <td>{{ count($category->products) }}</td>
                                   
-                                        <td>{{ format_money($category->products->avg('price')) }}</td>
+                                        {{-- <td>{{ format_money($category->products->avg('price')) }}</td> --}}
                                         <td class="td-actions text-right">
                                             <a href="{{ route('categories.show', $category) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Xem chi tiết">
                                                 <i class="tim-icons icon-zoom-split"></i>

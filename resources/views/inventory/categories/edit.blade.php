@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Edit Category', 'pageSlug' => 'categories', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Chỉnh sửa danh mục', 'pageSlug' => 'categories', 'section' => 'inventory'])
 
 @section('content')
     <div class="container-fluid mt--7">

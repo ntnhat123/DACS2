@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Edit Product', 'pageSlug' => 'products', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Chỉnh sửa sản phẩm', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
 

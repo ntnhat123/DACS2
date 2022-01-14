@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Add Product', 'pageSlug' => 'receipt', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Thêm sản phẩm', 'pageSlug' => 'receipt', 'section' => 'inventory'])
 
 @section('content')
         <div class="row">
@@ -7,10 +7,10 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">Add Product</h3>
+                                <h3 class="mb-0">Thêm sản phẩm</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('receipts.show', $receipt) }}" class="btn btn-sm btn-primary">Back to List</a>
+                                <a href="{{ route('receipts.show', $receipt) }}" class="btn btn-sm btn-primary">Quay lại</a>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">Continue</button>
+                                    <button type="submit" class="btn btn-success mt-4">Tiếp tục</button>
                                 </div>
                             </div>
                         </form>

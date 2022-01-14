@@ -86,7 +86,7 @@ class ProductController extends Controller
     public function show(Product $product,$id)
 
     {
-        $product = Product::paginate(4);
+        $product = Product::paginate(5);
         
         $product = Product::find($id);
 

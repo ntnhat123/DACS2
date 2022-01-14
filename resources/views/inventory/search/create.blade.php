@@ -1,14 +1,14 @@
-@extends('layouts.app', ['page' => 'Search', 'pageSlug' => 'products', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Tìm kiếm', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
 <div class="container">
     <div class="card-header">
         <div class="row">
             <div class="col-8">
-                <h4 class="card-title">Search</h4>
+                <h4 class="card-title">Tìm kiếm</h4>
             </div>
             <div class="col-4 text-right">
-                <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New product</a>
+                <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">Thêm sản phẩm</a>
             </div>
         </div>
     </div>
@@ -17,10 +17,10 @@
         @csrf
       
         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-            <label class="form-control-label" for="input-name">Search</label>
+            <label class="form-control-label" for="input-name">Tìm kiếm</label>
             <input  type="text" name="search" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Search..."  required autofocus>
             <div class="text-center">
-                <button type="submit" class="btn btn-success mt-4">Search</button>
+                <button type="submit" class="btn btn-success mt-4">Tìm kiếm</button>
             </div>
 
             @include('alerts.feedback', ['field' => 'name'])
@@ -39,15 +39,15 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">Category</th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Base Price</th>
-                                <th scope="col">Stock</th>
-                                <th scope="col">Faulty</th>
-                                <th scope="col">Total Sold</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">Thể loại</th>
+                                <th scope="col">Sản phẩm</th>
+                                <th scope="col">Giá </th>
+                                <th scope="col">Giá cũ</th>
+                                <th scope="col">Số lượng hiện có</th>
+                                <th scope="col">Đã bán</th>
+                                <th scope="col" width="300px;">Mô tả</th>
 
-                                <th scope="col">Image</th>
+                                <th scope="col">Ảnh</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>

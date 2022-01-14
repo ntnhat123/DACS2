@@ -63,7 +63,7 @@
                                         <td><img src="{{asset("/assets/img/products/".$product->image) }}"width="100px;" height="100px;"></td>
                                        
                                         <td class="td-actions text-right">
-                                            <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Xem chi tiết">
+                                            <a href="#" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Xem chi tiết">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
                                             <a href="{{ route('products.edit', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Chỉnh sửa sản phẩm">

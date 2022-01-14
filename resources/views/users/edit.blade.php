@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('User Management'), 'pageSlug' => 'users', 'section' => 'users'])
+@extends('layouts.app', ['page' => __('Chỉnh sửa người dùng'), 'pageSlug' => 'users', 'section' => 'users'])
 
 @section('content')
     <div class="container-fluid mt--7">
