@@ -52,8 +52,6 @@ class ProductController extends Controller
         $stock_defective= $request->input('stock_defective');
         $price= $request->input('price');
         $product_category_id= $request->input('product_category_id');
-
-        
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientoriginalExtension(); // getting image extension
@@ -111,7 +109,8 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $categories = ProductCategory::all();
-        return view('inventory.products.edit', compact('product', 'categories'));
+        
+        return view('inventory.products.edit', compact('product', 'categories'))->with('products',$products);
     }
 
     public function cart()
@@ -146,7 +145,7 @@ class ProductController extends Controller
             ];
         }
           
-        session()->put('cart', $cart);
+        session()->put('cart', $cart); //luu sc với bằng phương thức put
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
     
@@ -193,28 +192,30 @@ class ProductController extends Controller
      * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
-       
-        
-        $product->name= $request->input('name');
-        $product->description= $request->input('description');
-        $product->stock= $request->input('stock');
-        $product->stock_defective= $request->input('stock_defective');
-        $product->price= $request->input('price');
-        $product->product_category_id= $request->input('product_category_id');
-        
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientoriginalExtension(); // getting image extension
-            $filename = time(). '.' . $extension;
-            $file->move('/assets/img/products/', $filename);
+        // dd($product);
 
-        } else{
-            return $request;
-            
-        }
-        $product->update($request->all());
+       
+        $newImageName = uniqid() . '.' . $request->image->extension();
+        
+        $request->image->move(public_path('assets/img/products/'), $newImageName);
+        $name= $request->input('name');
+        $description= $request->input('description');
+        $stock= $request->input('stock');
+        $stock_defective= $request->input('stock_defective');
+        $price= $request->input('price');
+        $product_category_id= $request->input('product_category_id');
+        
+        Product::where('id',$product->id)->update([
+            'name' => $name,
+            'image'=> $newImageName,
+            'description' =>$description,
+            'product_category_id' =>$product_category_id,
+            'price' =>$price,
+            'stock' =>$stock,
+            'stock_defective' => $stock_defective
+        ]);
         
         
 
