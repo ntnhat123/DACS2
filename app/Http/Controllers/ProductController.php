@@ -200,6 +200,7 @@ class ProductController extends Controller
         $newImageName = uniqid() . '.' . $request->image->extension();
         
         $request->image->move(public_path('assets/img/products/'), $newImageName);
+        
         $name= $request->input('name');
         $description= $request->input('description');
         $stock= $request->input('stock');

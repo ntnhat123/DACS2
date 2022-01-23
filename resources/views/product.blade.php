@@ -213,7 +213,7 @@
                                 <div class="tab-content" id="product-tabContent">
                                     <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                         <div class="product-description">
-                                            <p class="product-short-description mb--20">{{$product->description}}</p>
+                                            <b class="product-short-description mb--20">{{$product->description}}</b>
 
                                         </div>
                                     </div>
